@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgktfqj60tbbh"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_vwd5p"]
+[ext_resource type="Texture2D" uid="uid://r1p8a5ao6hp" path="res://assets/temptitle.png" id="2_pttrj"]
+
+[sub_resource type="Gradient" id="Gradient_lwdf8"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mq7yv"]
+gradient = SubResource("Gradient_lwdf8")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_v6m3y"]
+diffuse_texture = SubResource("GradientTexture1D_mq7yv")
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_vwd5p")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(963.5, 543.5)
+scale = Vector2(7.54297, 1093)
+texture = SubResource("CanvasTexture_v6m3y")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(979, 226)
+texture = ExtResource("2_pttrj")
+
+[node name="Start Button" type="Button" parent="."]
+offset_left = 517.0
+offset_top = 322.0
+offset_right = 1380.0
+offset_bottom = 705.0
+text = "Start"
+
+[node name="MusicVolume" type="HSlider" parent="."]
+offset_left = 179.0
+offset_top = 784.0
+offset_right = 381.0
+offset_bottom = 863.0
+value = 100.0
+
+[node name="Name" type="RichTextLabel" parent="MusicVolume"]
+offset_right = 182.0
+offset_bottom = 40.0
+text = "Music"
+
+[node name="Number" type="RichTextLabel" parent="MusicVolume"]
+layout_mode = 0
+offset_left = 170.0
+offset_right = 206.0
+offset_bottom = 26.0
+text = "100"
+
+[node name="SFXVolume" type="HSlider" parent="."]
+offset_left = 182.0
+offset_top = 858.0
+offset_right = 384.0
+offset_bottom = 937.0
+value = 100.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SFXVolume"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -6.0
+offset_right = 187.0
+offset_bottom = 34.0
+text = "SFX"
+
+[node name="Number" type="RichTextLabel" parent="SFXVolume"]
+offset_left = 170.0
+offset_right = 206.0
+offset_bottom = 26.0
+text = "100"
+
+[connection signal="button_up" from="Start Button" to="." method="_on_start_button_button_up"]
+[connection signal="value_changed" from="MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="SFXVolume" to="." method="_on_sfx_volume_value_changed"]

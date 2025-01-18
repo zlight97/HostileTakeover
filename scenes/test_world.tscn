@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cowya1wptamrw"]
+
+[ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player.tscn" id="1_8wx4k"]
+
+[sub_resource type="Gradient" id="Gradient_x4rax"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5s3fi"]
+gradient = SubResource("Gradient_x4rax")
+
+[sub_resource type="Gradient" id="Gradient_mxxc0"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ymah2"]
+gradient = SubResource("Gradient_mxxc0")
+
+[sub_resource type="Gradient" id="Gradient_6dhih"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ft4xy"]
+gradient = SubResource("Gradient_6dhih")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixc8l"]
+size = Vector2(1984, 180)
+
+[node name="test_world" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(996.5, 485.25)
+scale = Vector2(8.10547, 971.5)
+texture = SubResource("GradientTexture1D_5s3fi")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(998, 988.125)
+scale = Vector2(8.14063, 533.75)
+texture = SubResource("GradientTexture1D_ymah2")
+
+[node name="Player" parent="." instance=ExtResource("1_8wx4k")]
+position = Vector2(446, 171)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(966, 1082.25)
+scale = Vector2(7.71875, 185.5)
+texture = SubResource("GradientTexture1D_ft4xy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(964, 1078)
+shape = SubResource("RectangleShape2D_ixc8l")
