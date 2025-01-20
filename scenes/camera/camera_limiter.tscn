@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcg0nacjk40mw"]
 
-[ext_resource type="Script" path="res://scenes/cam_controller.gd" id="1_1ro7l"]
+[ext_resource type="Script" path="res://scenes/camera/camera_limiter.gd" id="1_h2883"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02smq"]
 size = Vector2(113, 136)
 
 [node name="CameraLimiter" type="Area2D"]
 position = Vector2(94, 860)
-script = ExtResource("1_1ro7l")
+script = ExtResource("1_h2883")
 limit_x = 1
 limit_y = 2
 

@@ -12,6 +12,9 @@ const MAX_LIMIT = 10000000
 
 @onready var LimitPos = $CamPosition
 
+func _ready():
+	body_entered.connect(_on_body_entered.bind())
+
 func is_one_way():
 	return one_way
 

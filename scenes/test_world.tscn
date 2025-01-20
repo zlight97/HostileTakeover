@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cowya1wptamrw"]
 
 [ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player.tscn" id="1_8wx4k"]
-[ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera_limiter.tscn" id="2_h5eah"]
+[ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_h5eah"]
 
 [sub_resource type="Gradient" id="Gradient_x4rax"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -50,11 +50,7 @@ position = Vector2(524.75, 897.625)
 scale = Vector2(0.447265, 134.75)
 texture = SubResource("GradientTexture1D_ft4xy")
 
-[node name="CameraLimiter" parent="." instance=ExtResource("2_h5eah")]
-one_way = true
-
-[node name="CamPosition" parent="CameraLimiter" index="1"]
-position = Vector2(792, 388)
+[node name="CameraLimiter2" parent="." instance=ExtResource("2_h5eah")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -67,4 +63,4 @@ texture = SubResource("GradientTexture1D_ft4xy")
 position = Vector2(1415.5, 1078)
 shape = SubResource("RectangleShape2D_ixc8l")
 
-[editable path="CameraLimiter"]
+[editable path="CameraLimiter2"]

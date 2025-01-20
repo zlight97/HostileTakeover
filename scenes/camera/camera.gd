@@ -24,8 +24,6 @@ func set_limits(limiter: CameraLimiter):
 	camera_limit_bottom_target = limiter.get_limit_bottom()
 	camera_limit_right_target = limiter.get_limit_right()
 	camera_limit_top_target = limiter.get_limit_top()
-	print(camera_limit_bottom_target)
-	print(camera_limit_top_target)
 	if not limiter.is_one_way():
 		if limiter.limit_x == limiter.LimitX.LEFT:
 			camera_limit_right_target = camera_limit_left_target + (camera_max_x - camera_min_x)
@@ -55,6 +53,7 @@ func _process(delta: float) -> void:
 	limit_right = clamp_movement(camera_limit_right_target, camera_right, limit_right) 
 	limit_top = clamp_movement(camera_limit_top_target, camera_top, limit_top )
 	limit_bottom = clamp_movement(camera_limit_bottom_target, camera_bottom, limit_bottom)
+	
 
 func clamp_movement(dest, loc, real_cam_loc):
 	return loc if abs(dest-loc) < abs(dest-real_cam_loc) else real_cam_loc
