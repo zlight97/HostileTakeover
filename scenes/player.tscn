@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://c4jgqkm2wris0" path="res://assets/mc/walking/walk0003.png" id="14_5ajkh"]
 [ext_resource type="Texture2D" uid="uid://bpnwmt8vwtjfi" path="res://assets/mc/walking/walk0004.png" id="15_3jh0s"]
 [ext_resource type="Script" path="res://scenes/state_machine.gd" id="17_ub7h3"]
-[ext_resource type="Script" path="res://scenes/player_walk.gd" id="18_fpxwx"]
-[ext_resource type="Script" path="res://scenes/player_idle.gd" id="18_g0q2j"]
+[ext_resource type="Script" path="res://scenes/states/player_walk.gd" id="18_fpxwx"]
+[ext_resource type="Script" path="res://scenes/states/player_idle.gd" id="18_g0q2j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kh74q"]
 animations = [{
@@ -116,10 +116,8 @@ script = ExtResource("3_mugc2")
 script = ExtResource("17_ub7h3")
 initial_state = NodePath("idle")
 
-[node name="walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="walk" type="Node" parent="StateMachine"]
 script = ExtResource("18_fpxwx")
-player = NodePath("../..")
 
-[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("18_g0q2j")
-player = NodePath("../..")

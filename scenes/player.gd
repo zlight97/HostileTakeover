@@ -21,6 +21,17 @@ func sprite_change(sprite_name: String):
 func set_camera_limits(limiter: CameraLimiter):
 	$Camera.set_limits(limiter)
 
+func jump():
+	velocity.y = jump_velocity
+
+func move(direction):
+	if is_on_floor(): # cannot change movement while airborne
+		if direction:
+			velocity.x = move_toward(velocity.x, direction * MAX_SPEED, speed)
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed if speed < stop_speed else stop_speed)
+	
+
 func _physics_process(delta: float) -> void:
 	#process_camera(delta)
 	# Add the gravity.
@@ -29,16 +40,11 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
+		jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
-	if is_on_floor(): # cannot change movement while airborne
-		if direction:
-			velocity.x = move_toward(velocity.x, direction * MAX_SPEED, speed)
-		else:
-			velocity.x = move_toward(velocity.x, 0, speed if speed < stop_speed else stop_speed)
-	
+	move(direction)
 
 	move_and_slide()

@@ -9,8 +9,7 @@ func _ready():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.scene_change.connect(on_state_change)
-	call_deferred("init")
-func init():
+	await owner.ready
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state

@@ -1,4 +1,10 @@
 extends State
 class_name PlayerState
 
-signal change_sprite
+var player: Player
+
+func _ready():
+	await owner.ready
+	player = owner as Player
+	
+	assert(player != null)

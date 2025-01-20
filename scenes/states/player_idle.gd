@@ -1,9 +1,7 @@
 extends PlayerState
 
-@export var player: Player
-
 func enter():
-	change_sprite.emit("idle")
+	player.sprite_change("idle")
 
 func physics_update(delta: float) -> void:
 	if player.velocity.x != 0:
