@@ -7,7 +7,11 @@ var jump_velocity = -400.0
 var stop_speed = 25
 var speed = 10
 
+func set_camera_limits(limiter: CameraLimiter):
+	$Camera.set_limits(limiter)
+
 func _physics_process(delta: float) -> void:
+	#process_camera(delta)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

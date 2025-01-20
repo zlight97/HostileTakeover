@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cowya1wptamrw"]
+[gd_scene load_steps=10 format=3 uid="uid://cowya1wptamrw"]
 
 [ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player.tscn" id="1_8wx4k"]
+[ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera_limiter.tscn" id="2_h5eah"]
 
 [sub_resource type="Gradient" id="Gradient_x4rax"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -19,7 +20,7 @@ gradient = SubResource("Gradient_mxxc0")
 gradient = SubResource("Gradient_6dhih")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixc8l"]
-size = Vector2(1984, 180)
+size = Vector2(2887, 180)
 
 [node name="test_world" type="Node2D"]
 
@@ -42,15 +43,28 @@ scale = Vector2(8.14063, 533.75)
 texture = SubResource("GradientTexture1D_ymah2")
 
 [node name="Player" parent="." instance=ExtResource("1_8wx4k")]
-position = Vector2(446, 171)
+position = Vector2(99, 876)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(524.75, 897.625)
+scale = Vector2(0.447265, 134.75)
+texture = SubResource("GradientTexture1D_ft4xy")
+
+[node name="CameraLimiter" parent="." instance=ExtResource("2_h5eah")]
+one_way = true
+
+[node name="CamPosition" parent="CameraLimiter" index="1"]
+position = Vector2(792, 388)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(966, 1082.25)
-scale = Vector2(7.71875, 185.5)
+position = Vector2(1418.5, 1082.25)
+scale = Vector2(11.2539, 185.5)
 texture = SubResource("GradientTexture1D_ft4xy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(964, 1078)
+position = Vector2(1415.5, 1078)
 shape = SubResource("RectangleShape2D_ixc8l")
+
+[editable path="CameraLimiter"]
