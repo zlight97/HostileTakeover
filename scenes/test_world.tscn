@@ -44,6 +44,7 @@ texture = SubResource("GradientTexture1D_ymah2")
 
 [node name="Player" parent="." instance=ExtResource("1_8wx4k")]
 position = Vector2(99, 876)
+can_attack = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(524.75, 897.625)

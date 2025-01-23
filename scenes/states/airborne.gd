@@ -11,3 +11,6 @@ func physics_update(delta):
 			pass
 		else:
 			scene_change.emit(self, "walk")
+	else:
+		if Input.is_action_just_pressed("1"):
+			scene_change.emit(self,"air_attack")
