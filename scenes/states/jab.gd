@@ -9,7 +9,7 @@ func enter():
 	player.sprite_change(animation_name)
 
 func physics_update(delta):
-	player.move(0)
+	player.move(0, delta)
 	if player.can_act:
 		scene_change.emit(self,"idle")
 	

@@ -7,7 +7,7 @@ func enter():
 	player.sprite_change("jump")
 
 func physics_update(delta):
-	player.move(0)
+	player.move(0, delta)
 	mult += delta
 	if mult > player.max_jump_charge:
 		mult = player.max_jump_charge

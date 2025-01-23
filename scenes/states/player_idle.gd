@@ -15,7 +15,7 @@ func physics_update(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction := Input.get_axis("left", "right")
-		player.move(direction)
+		player.move(direction, delta)
 		
 		if Input.is_action_just_pressed("1"):
 			scene_change.emit(self,"jab0")

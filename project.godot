@@ -27,6 +27,11 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="D:/Godot Projects/HostileTakeover/out.avi"
+movie_writer/fps=25
+
 [input]
 
 left={

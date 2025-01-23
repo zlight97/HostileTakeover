@@ -9,8 +9,8 @@ const MAX_SPEED = 300.0
 @export var can_attack: bool = false
 
 var jump_velocity = -400.0
-var stop_speed = 25
-var speed = 10 
+var stop_speed = 400
+var speed = 600 
 var running = false
 var max_jump_charge = 2 #in seconds
 var jump_mult = 1.0
@@ -29,12 +29,12 @@ func jump(time):
 	var direction := Input.get_axis("left", "right")
 	velocity.x = velocity.x + (direction * MAX_SPEED/2) if velocity.x < MAX_SPEED/2 else direction * MAX_SPEED/2
 
-func move(direction):
+func move(direction, delta):
 	if is_on_floor(): # cannot change movement while airborne
 		if direction:
-			velocity.x = move_toward(velocity.x, direction * MAX_SPEED, speed)
+			velocity.x = move_toward(velocity.x, direction * MAX_SPEED, speed * delta)
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed if speed < stop_speed else stop_speed)
+			velocity.x = move_toward(velocity.x, 0, speed * delta if speed < stop_speed else stop_speed * delta)
 	
 
 func _physics_process(delta: float) -> void:
