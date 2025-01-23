@@ -3,26 +3,31 @@ class_name Player
 
 const MAX_SPEED = 300.0
 
+@export var attack_damage = 10.
+@export var attack_knockback = 2
+@export var can_act: bool = true
+@export var can_attack: bool = false
+
 var jump_velocity = -400.0
 var stop_speed = 25
 var speed = 10 
 var running = false
+var max_jump_charge = 2 #in seconds
+var jump_mult = 1.0
 
-@onready var sprite = $Sprite
-
-func _ready():
-	for child in $StateMachine.get_children():
-		child.change_sprite.connect(sprite_change)
+@onready var sprite: AnimatedSprite2D = $Sprite
+@onready var animation: AnimationPlayer = $Animation
 
 func sprite_change(sprite_name: String):
-	$Sprite.animation = sprite_name
-	$Sprite.frame = 0
+	animation.play(sprite_name)
 
 func set_camera_limits(limiter: CameraLimiter):
 	$Camera.set_limits(limiter)
 
-func jump():
-	velocity.y = jump_velocity
+func jump(time):
+	velocity.y = jump_velocity * time * jump_mult
+	var direction := Input.get_axis("left", "right")
+	velocity.x = velocity.x + (direction * MAX_SPEED/2) if velocity.x < MAX_SPEED/2 else direction * MAX_SPEED/2
 
 func move(direction):
 	if is_on_floor(): # cannot change movement while airborne
@@ -38,13 +43,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		jump()
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	move(direction)
+	
 
 	move_and_slide()
