@@ -14,12 +14,20 @@ var diff_y
 
 #Limit vars
 const MAX_LIMIT = 10000000
+const RESET_SPEED = 5
 var camera_limit_left_target = -MAX_LIMIT
 var camera_limit_right_target = MAX_LIMIT
 var camera_limit_bottom_target = MAX_LIMIT
 var camera_limit_top_target = -MAX_LIMIT
 
+var reset = false
+
+func reset_locks():
+	reset = true
+
 func set_limits(limiter: CameraLimiter):
+	if limiter.limit_x == limiter.LimitX.NONE and limiter.limit_y == limiter.LimitY.NONE:
+		reset_locks()
 	camera_limit_left_target = limiter.get_limit_left()
 	camera_limit_bottom_target = limiter.get_limit_bottom()
 	camera_limit_right_target = limiter.get_limit_right()
@@ -49,11 +57,24 @@ func _process(delta: float) -> void:
 	var camera_bottom = global_position.y + diff_y + (drag_bottom_margin * diff_y)
 	var camera_left = global_position.x - diff_x - (drag_left_margin * diff_x)
 	var camera_right = global_position.x + diff_x + (drag_right_margin * diff_x)
-	limit_left = clamp_movement(camera_limit_left_target, camera_left, limit_left)
-	limit_right = clamp_movement(camera_limit_right_target, camera_right, limit_right) 
-	limit_top = clamp_movement(camera_limit_top_target, camera_top, limit_top )
-	limit_bottom = clamp_movement(camera_limit_bottom_target, camera_bottom, limit_bottom)
+	if not reset:
+		limit_left = clamp_movement(camera_limit_left_target, camera_left, limit_left)
+		limit_right = clamp_movement(camera_limit_right_target, camera_right, limit_right) 
+		limit_top = clamp_movement(camera_limit_top_target, camera_top, limit_top )
+		limit_bottom = clamp_movement(camera_limit_bottom_target, camera_bottom, limit_bottom)
+	else:
+		limit_left = limit_left - RESET_SPEED
+		limit_right = limit_right + RESET_SPEED
+		limit_top = limit_top - RESET_SPEED
+		limit_bottom = limit_bottom + RESET_SPEED
+		if $ResetTimer.is_stopped():
+			$ResetTimer.start()
+		
 	
 
 func clamp_movement(dest, loc, real_cam_loc):
 	return loc if abs(dest-loc) < abs(dest-real_cam_loc) else real_cam_loc
+
+
+func _on_reset_timer_timeout() -> void:
+	reset = false

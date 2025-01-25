@@ -7,6 +7,9 @@ var pitch_min_diff = .1
 var using_timer = false
 var can_play = false
 
+enum volume_type {NONE, SFX, MUSIC}
+@export var audio_type: volume_type = volume_type.NONE
+
 #func _ready() -> void:
 	#$Timer.timeout.connect(_on_timer_timeout)
 
@@ -21,6 +24,16 @@ func set_timeout(time):
 	$Timer.wait_time = time
 
 func play_pitched(from_position=0.0):
+	var settings = get_node("/root/GlobalSettings")
+	if audio_type == volume_type.NONE:
+		pass
+	elif audio_type == volume_type.SFX:
+		volume_db = float(settings.sfx_volume) / 100.
+	elif audio_type == volume_type.MUSIC:
+		volume_db = float(settings.music_volume) / 100.
+		play(from_position)
+		return
+		
 	while abs(lastPitch - pitch_scale) < pitch_min_diff:
 		pitch_scale = randf_range(pitch_low, pitch_hi)
 	lastPitch = pitch_scale

@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cowya1wptamrw"]
+[gd_scene load_steps=12 format=3 uid="uid://cowya1wptamrw"]
 
-[ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player.tscn" id="1_8wx4k"]
+[ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player/player.tscn" id="1_8wx4k"]
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_sgt8x"]
 [ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_h5eah"]
+[ext_resource type="PackedScene" uid="uid://coit1yxsfwypx" path="res://scenes/enemies/enemy_mdw.tscn" id="3_wr3o8"]
 
 [sub_resource type="Gradient" id="Gradient_x4rax"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -23,6 +25,7 @@ gradient = SubResource("Gradient_6dhih")
 size = Vector2(2887, 180)
 
 [node name="test_world" type="Node2D"]
+script = ExtResource("1_sgt8x")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -44,16 +47,22 @@ texture = SubResource("GradientTexture1D_ymah2")
 
 [node name="Player" parent="." instance=ExtResource("1_8wx4k")]
 position = Vector2(99, 876)
-can_attack = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(524.75, 897.625)
 scale = Vector2(0.447265, 134.75)
 texture = SubResource("GradientTexture1D_ft4xy")
 
+[node name="CameraLimiter3" parent="." instance=ExtResource("2_h5eah")]
+position = Vector2(2240, 885)
+limit_x = 0
+limit_y = 0
+
 [node name="CameraLimiter2" parent="." instance=ExtResource("2_h5eah")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(1418.5, 1082.25)
@@ -64,4 +73,8 @@ texture = SubResource("GradientTexture1D_ft4xy")
 position = Vector2(1415.5, 1078)
 shape = SubResource("RectangleShape2D_ixc8l")
 
+[node name="EnemyMDW" parent="." instance=ExtResource("3_wr3o8")]
+position = Vector2(1671, 505)
+
+[editable path="CameraLimiter3"]
 [editable path="CameraLimiter2"]
