@@ -285,8 +285,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t73k7"]
-radius = 15.0858
-height = 83.1613
+radius = 12.9596
+height = 65.498
 
 [sub_resource type="Animation" id="Animation_7nfal"]
 length = 0.001
@@ -1012,7 +1012,7 @@ tracks/7/path = NodePath(".:attack_knockback")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.400033),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [2]
@@ -1024,7 +1024,7 @@ tracks/8/path = NodePath(".:attack_damage")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.400033),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [10.0]
@@ -1537,8 +1537,8 @@ _data = {
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ewvdb")
-attack_damage = 0.0
-attack_knockback = 0
+attack_damage = 7.0
+attack_knockback = 4
 can_act = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1549,8 +1549,9 @@ shape = SubResource("RectangleShape2D_iy5hk")
 position = Vector2(-2.28882e-05, -0.233971)
 scale = Vector2(0.366102, 0.366102)
 sprite_frames = SubResource("SpriteFrames_i1ppr")
-animation = &"death"
+animation = &"jab"
 autoplay = "jump"
+frame = 7
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("55_uqxhb")
@@ -1562,8 +1563,8 @@ shape = SubResource("RectangleShape2D_iy5hk")
 [node name="AttackHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
-position = Vector2(26, -32)
-rotation = 4.90612
+position = Vector2(27, -43)
+rotation = 4.98117
 shape = SubResource("CapsuleShape2D_t73k7")
 disabled = true
 
@@ -1601,4 +1602,5 @@ script = ExtResource("63_yiju1")
 one_shot = true
 
 [connection signal="apply_damage" from="Hurtbox" to="." method="_on_hurtbox_apply_damage"]
+[connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

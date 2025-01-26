@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://b6ucji7xykjcq"]
+[gd_scene load_steps=85 format=3 uid="uid://b6ucji7xykjcq"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_an811"]
 [ext_resource type="Texture2D" uid="uid://bj1yb2fcdr42t" path="res://assets/MDW/jump/jump0002.png" id="2_gwyt2"]
@@ -51,21 +51,22 @@
 [ext_resource type="Script" path="res://scenes/player/states/jump.gd" id="21_w0k3u"]
 [ext_resource type="Script" path="res://scenes/player/states/jab.gd" id="22_dqw6e"]
 [ext_resource type="Script" path="res://scenes/player/states/air_attack.gd" id="23_3drrk"]
-[ext_resource type="Texture2D" uid="uid://dkc1g6hay6eny" path="res://assets/MDWEnemy/run/run0000.png" id="35_aseey"]
-[ext_resource type="Texture2D" uid="uid://u0ugdwgexum1" path="res://assets/MDWEnemy/run/run0001.png" id="36_d5jgq"]
-[ext_resource type="Texture2D" uid="uid://bgtfmpw8vnwbv" path="res://assets/MDWEnemy/run/run0002.png" id="37_31o80"]
-[ext_resource type="Texture2D" uid="uid://cfl213vmg6tsa" path="res://assets/MDWEnemy/run/run0003.png" id="38_jx8i0"]
-[ext_resource type="Texture2D" uid="uid://b51qv02ijwmgs" path="res://assets/MDWEnemy/run/run0004.png" id="39_24eri"]
-[ext_resource type="Texture2D" uid="uid://bbrv1rtt3vf8h" path="res://assets/MDWEnemy/run/run0005.png" id="40_3i035"]
-[ext_resource type="Texture2D" uid="uid://k7hjf45824cx" path="res://assets/MDWEnemy/run/run0006.png" id="41_xime0"]
-[ext_resource type="Texture2D" uid="uid://bd2ibirqekbel" path="res://assets/MDWEnemy/run/run0007.png" id="42_2g7af"]
-[ext_resource type="Texture2D" uid="uid://c3nbrkwc47rb5" path="res://assets/MDWEnemy/run/run0008.png" id="43_wu3l6"]
-[ext_resource type="Texture2D" uid="uid://c1p54aa7fbs7m" path="res://assets/MDWEnemy/run/run0009.png" id="44_qqk1x"]
-[ext_resource type="Texture2D" uid="uid://bgid58w3mrsxc" path="res://assets/MDWEnemy/run/run0010.png" id="45_hmb1u"]
-[ext_resource type="Texture2D" uid="uid://dhji0at4p5xht" path="res://assets/MDWEnemy/run/run0011.png" id="46_jmvtu"]
+[ext_resource type="Texture2D" uid="uid://6tlq12jgij88" path="res://assets/MDW/run/run0000.png" id="36_ovp0u"]
+[ext_resource type="Texture2D" uid="uid://dwhj3hcu6tkao" path="res://assets/MDW/run/run0001.png" id="37_nhtfh"]
+[ext_resource type="Texture2D" uid="uid://bthqa4kgosq1g" path="res://assets/MDW/run/run0002.png" id="38_mx8lb"]
+[ext_resource type="Texture2D" uid="uid://dsjrcngh7unuh" path="res://assets/MDW/run/run0003.png" id="39_ro6pu"]
+[ext_resource type="Texture2D" uid="uid://c1xw2armhp88v" path="res://assets/MDW/run/run0004.png" id="40_g1p14"]
+[ext_resource type="Texture2D" uid="uid://8lh12ev6bdfu" path="res://assets/MDW/run/run0005.png" id="41_iemig"]
+[ext_resource type="Texture2D" uid="uid://bmg0xdlbf58vq" path="res://assets/MDW/run/run0006.png" id="42_psott"]
+[ext_resource type="Texture2D" uid="uid://d04frl1btdok1" path="res://assets/MDW/run/run0007.png" id="43_l0dtw"]
+[ext_resource type="Texture2D" uid="uid://c1msl5iemjki5" path="res://assets/MDW/run/run0008.png" id="44_vhmpv"]
+[ext_resource type="Texture2D" uid="uid://doirbjrrguanj" path="res://assets/MDW/run/run0009.png" id="45_s6hyl"]
+[ext_resource type="Texture2D" uid="uid://c756vud5we0lq" path="res://assets/MDW/run/run0010.png" id="46_t7vk5"]
+[ext_resource type="Texture2D" uid="uid://b2c6wnexkmyok" path="res://assets/MDW/run/run0011.png" id="47_4ffbd"]
 [ext_resource type="Script" path="res://scenes/player/states/charge_attack.gd" id="51_adev2"]
 [ext_resource type="Script" path="res://scenes/player/states/charge_attack_1.gd" id="52_qc2aw"]
 [ext_resource type="Script" path="res://scenes/player/states/run.gd" id="58_ibi6d"]
+[ext_resource type="PackedScene" uid="uid://dnj67jm44rwpt" path="res://scenes/player/hud.tscn" id="67_ug417"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhy7a"]
 size = Vector2(110, 138)
@@ -116,7 +117,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_8u6bs")
 }],
-"loop": true,
+"loop": false,
 "name": &"charge_attack",
 "speed": 5.0
 }, {
@@ -221,42 +222,42 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("35_aseey")
+"texture": ExtResource("36_ovp0u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_d5jgq")
+"texture": ExtResource("37_nhtfh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_31o80")
+"texture": ExtResource("38_mx8lb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("38_jx8i0")
+"texture": ExtResource("39_ro6pu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_24eri")
+"texture": ExtResource("40_g1p14")
 }, {
 "duration": 1.0,
-"texture": ExtResource("40_3i035")
+"texture": ExtResource("41_iemig")
 }, {
 "duration": 1.0,
-"texture": ExtResource("41_xime0")
+"texture": ExtResource("42_psott")
 }, {
 "duration": 1.0,
-"texture": ExtResource("42_2g7af")
+"texture": ExtResource("43_l0dtw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("43_wu3l6")
+"texture": ExtResource("44_vhmpv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("44_qqk1x")
+"texture": ExtResource("45_s6hyl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("45_hmb1u")
+"texture": ExtResource("46_t7vk5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("46_jmvtu")
+"texture": ExtResource("47_4ffbd")
 }],
-"loop": true,
+"loop": false,
 "name": &"run",
 "speed": 5.0
 }, {
@@ -803,10 +804,10 @@ tracks/3/path = NodePath("AttackHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, false]
+"values": [false, false, false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -875,10 +876,10 @@ tracks/9/path = NodePath(".:can_act")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, false, true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -994,10 +995,10 @@ tracks/3/path = NodePath("AttackHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1155,10 +1156,10 @@ tracks/3/path = NodePath("AttackHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1316,10 +1317,10 @@ tracks/3/path = NodePath("AttackHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [true, false, false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1573,6 +1574,8 @@ libraries = {
 }
 
 [node name="Camera" parent="." instance=ExtResource("16_8y1rm")]
+
+[node name="Hud" parent="." instance=ExtResource("67_ug417")]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("17_ub7h3")

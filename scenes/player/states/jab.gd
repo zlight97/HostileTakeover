@@ -8,6 +8,9 @@ func enter():
 	player.can_attack = false
 	player.sprite_change(animation_name)
 
+func exit():
+	player.disable_hurtbox()
+
 func physics_update(delta):
 	player.move(0, delta)
 	player.animation.speed_scale = player.attack_speed

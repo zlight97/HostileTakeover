@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnj67jm44rwpt"]
+
+[ext_resource type="Script" path="res://scenes/player/hud.gd" id="1_jbhkh"]
+[ext_resource type="Texture2D" uid="uid://7kyumotos6wh" path="res://assets/icons/m.d.w icon.png" id="1_wvy6c"]
+[ext_resource type="FontFile" uid="uid://bscmb3j8u7fjq" path="res://assets/fonts/aspekta/ttf/Aspekta-300.ttf" id="3_xgvsj"]
+[ext_resource type="FontFile" uid="uid://bjaqt3ok1wqm1" path="res://assets/fonts/aspekta/ttf/Aspekta-950.ttf" id="4_eiw70"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36r0a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1w38t"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_jbhkh")
+
+[node name="Border" type="ColorRect" parent="."]
+offset_left = 112.0
+offset_top = 88.0
+offset_right = 576.0
+offset_bottom = 176.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Border"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 456.0
+offset_bottom = 80.0
+
+[node name="HPBar" type="ProgressBar" parent="."]
+offset_left = 120.0
+offset_top = 96.0
+offset_right = 568.0
+offset_bottom = 168.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_36r0a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1w38t")
+step = 1.0
+show_percentage = false
+
+[node name="MDWSprite" type="Sprite2D" parent="."]
+position = Vector2(85.5, 105.338)
+scale = Vector2(0.347015, 0.347015)
+texture = ExtResource("1_wvy6c")
+
+[node name="MDWText" type="RichTextLabel" parent="."]
+offset_left = 40.0
+offset_top = 178.0
+offset_right = 141.0
+offset_bottom = 236.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_xgvsj")
+theme_override_fonts/bold_font = ExtResource("4_eiw70")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]M.D.W"

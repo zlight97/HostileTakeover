@@ -26,6 +26,7 @@ var alive = true
 
 func apply_damage(damage):
 	current_health -= damage
+	$Hud.update_health()
 
 func get_facing_dir():
 	return velocity.x > 0 if velocity.x != 0 and not knockedBack else facingRight
@@ -75,8 +76,11 @@ func _on_attack_hitbox_area_entered(area: Area2D) -> void:
 func apply_knockback(knockback):#TODO
 	pass
 
-func _on_hurtbox_apply_damage(damage, knockback) -> void:	
+func _on_hurtbox_apply_damage(damage, knockback) -> void:
 	if not alive:
 		return
-	current_health -= damage
+	apply_damage(damage)
 	apply_knockback(knockback)
+	
+func disable_hurtbox():
+	$Hurtbox/CollisionShape2D.disabled = true

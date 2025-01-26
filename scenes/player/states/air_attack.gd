@@ -6,6 +6,9 @@ func enter():
 	player.attack_knockback = 2
 	player.sprite_change("air_attack")
 
+func exit():
+	player.disable_hurtbox()
+
 func physics_update(delta):
 	player.attack_damage += 2*delta
 	player.attack_knockback = 4*delta

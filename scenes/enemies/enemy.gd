@@ -29,6 +29,10 @@ var detection_range = 500
 func _ready() -> void:
 	await owner.ready
 	player = owner.player
+	if player.global_position.x < global_position.x:
+		facingRight = false
+		scale.x = -1
+		
 
 func apply_damage(damage):
 	current_health -= damage
@@ -84,3 +88,8 @@ func _on_hurtbox_apply_damage(damage, knockback) -> void:
 func _on_state_timer_timeout() -> void:
 	if $StateMachine.current_state:
 		$StateMachine.current_state.state_timer_triggered()
+
+
+func _on_attack_hitbox_area_entered(area: Area2D) -> void:
+	if area is PlayerHurtbox:
+		area.hurt(attack_damage, attack_knockback)
