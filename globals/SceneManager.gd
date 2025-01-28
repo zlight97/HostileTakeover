@@ -5,7 +5,8 @@ var dialogue_scene = null
 var player = null
 
 var next_map_index = 0
-var maps = ["res://scenes/test_world.tscn"]
+var maps = ["res://scenes/main_menu.tscn",
+			"res://scenes/test_world.tscn"]
 	
 func _deferred_clear_dialogue():
 	# Immediately free the current scene,
@@ -18,16 +19,26 @@ func move_zone(from_name,entry_point=0):
 	var path = get_node("/root/MapTables").get_map_dest(from_name, entry_point)
 	call_deferred("_deferred_move_zone", path[0], path[1])
 
-func load_next_zone(path):
-	call_deferred("_deferred_load_zone", path)
+func load_next_zone():
+	call_deferred("_deferred_load_zone")
+	
+func restart_zone():
+	call_deferred("_deferred_load_zone", true)
 
-func _deferred_load_zone(path):
+func restart():
+	next_map_index = 0
+	load_next_zone()
+
+func _deferred_load_zone(restartZone:=false):
 	if current_scene:
 		current_scene.free()
 
 	# Instance the new scene.
-	current_scene = load(path).instantiate()
-
+	if restartZone:
+		current_scene = load(maps[next_map_index-1 if next_map_index > 0 else 0]).instantiate()
+	else:
+		current_scene = load(maps[next_map_index]).instantiate()
+		next_map_index += 1
 	var root = get_tree().get_root()
 	var scene = root.get_node("Main")
 	scene.add_child(current_scene)

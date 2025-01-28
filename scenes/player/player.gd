@@ -20,6 +20,7 @@ var facingRight = true
 var knockedBack = false
 var run_mult = 2.0
 var alive = true
+var can_pause = true
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var animation: AnimationPlayer = $Animation
@@ -52,8 +53,18 @@ func move(direction, delta):
 func die():#TODO add death animation, fade to black, a death screen etc.
 	alive = false
 	$StateMachine.on_state_change($StateMachine.current_state, "dead")
+	$Hud.die()
+
+func pause():
+	if can_pause:
+		$Hud.toggle_pause()
+		get_tree().paused = true
+		can_pause = false
+		$unpause.start()
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pause()
 	if current_health <= 0 and alive:
 		die()
 
@@ -84,3 +95,6 @@ func _on_hurtbox_apply_damage(damage, knockback) -> void:
 	
 func disable_hurtbox():
 	$Hurtbox/CollisionShape2D.disabled = true
+
+func _on_unpause_timeout() -> void:
+	can_pause = true

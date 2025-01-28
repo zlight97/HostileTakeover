@@ -22,4 +22,4 @@ func _on_sfx_volume_value_changed(value: float) -> void:
 	refresh_sfx_volume()
 
 func _on_start_button_button_up() -> void:
-	get_node("/root/SceneManager").load_next_zone("res://scenes/test_world.tscn")
+	get_node("/root/SceneManager").load_next_zone()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://b6ucji7xykjcq"]
+[gd_scene load_steps=87 format=3 uid="uid://b6ucji7xykjcq"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_an811"]
 [ext_resource type="Texture2D" uid="uid://bj1yb2fcdr42t" path="res://assets/MDW/jump/jump0002.png" id="2_gwyt2"]
@@ -67,6 +67,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/charge_attack_1.gd" id="52_qc2aw"]
 [ext_resource type="Script" path="res://scenes/player/states/run.gd" id="58_ibi6d"]
 [ext_resource type="PackedScene" uid="uid://dnj67jm44rwpt" path="res://scenes/player/hud.tscn" id="67_ug417"]
+[ext_resource type="Script" path="res://scenes/player/states/dead.gd" id="68_c7q1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhy7a"]
 size = Vector2(110, 138)
@@ -918,6 +919,34 @@ tracks/12/keys = {
 "values": [57.2627, 83.1613]
 }
 
+[sub_resource type="Animation" id="Animation_di8nj"]
+resource_name = "dead"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
 [sub_resource type="Animation" id="Animation_0q2bk"]
 resource_name = "idle"
 length = 2.0
@@ -1526,6 +1555,7 @@ _data = {
 "airborne": SubResource("Animation_kt3en"),
 "charge_attack_0": SubResource("Animation_x1y06"),
 "charge_attack_1": SubResource("Animation_hgb2e"),
+"dead": SubResource("Animation_di8nj"),
 "idle": SubResource("Animation_0q2bk"),
 "jab0": SubResource("Animation_t0een"),
 "jab1": SubResource("Animation_vhj0l"),
@@ -1619,5 +1649,13 @@ script = ExtResource("51_adev2")
 [node name="charge_attack1" type="Node" parent="StateMachine"]
 script = ExtResource("52_qc2aw")
 
+[node name="dead" type="Node" parent="StateMachine"]
+script = ExtResource("68_c7q1a")
+
+[node name="unpause" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="apply_damage" from="Hurtbox" to="." method="_on_hurtbox_apply_damage"]
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
+[connection signal="timeout" from="unpause" to="." method="_on_unpause_timeout"]

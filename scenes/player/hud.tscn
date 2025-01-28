@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnj67jm44rwpt"]
+[gd_scene load_steps=8 format=3 uid="uid://dnj67jm44rwpt"]
 
 [ext_resource type="Script" path="res://scenes/player/hud.gd" id="1_jbhkh"]
 [ext_resource type="Texture2D" uid="uid://7kyumotos6wh" path="res://assets/icons/m.d.w icon.png" id="1_wvy6c"]
 [ext_resource type="FontFile" uid="uid://bscmb3j8u7fjq" path="res://assets/fonts/aspekta/ttf/Aspekta-300.ttf" id="3_xgvsj"]
 [ext_resource type="FontFile" uid="uid://bjaqt3ok1wqm1" path="res://assets/fonts/aspekta/ttf/Aspekta-950.ttf" id="4_eiw70"]
+[ext_resource type="Texture2D" uid="uid://bbqc12ili85u8" path="res://assets/icons/Hostile Takeover logo.png" id="5_h4ppr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36r0a"]
 
@@ -11,6 +12,7 @@
 bg_color = Color(1, 0, 0, 1)
 
 [node name="Hud" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_jbhkh")
 
 [node name="Border" type="ColorRect" parent="."]
@@ -21,6 +23,7 @@ offset_bottom = 176.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="Border"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 456.0
@@ -53,3 +56,141 @@ theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 28
 bbcode_enabled = true
 text = "[b]M.D.W"
+
+[node name="DeadScreen" type="ColorRect" parent="."]
+visible = false
+offset_left = 504.0
+offset_top = 232.0
+offset_right = 1504.0
+offset_bottom = 800.0
+color = Color(1, 1, 1, 0.227451)
+
+[node name="Restart" type="Button" parent="DeadScreen"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 320.0
+offset_right = 424.0
+offset_bottom = 448.0
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="DeadScreen"]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 320.0
+offset_right = 784.0
+offset_bottom = 448.0
+text = "Main Menu"
+
+[node name="HostileTakeoverLogo" type="Sprite2D" parent="DeadScreen"]
+position = Vector2(520, 144)
+scale = Vector2(0.0948037, 0.0948037)
+texture = ExtResource("5_h4ppr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DeadScreen"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 272.0
+offset_right = 608.0
+offset_bottom = 320.0
+bbcode_enabled = true
+text = "[center]You are Dead"
+
+[node name="Pause" type="ColorRect" parent="."]
+process_mode = 2
+visible = false
+offset_left = 504.0
+offset_top = 232.0
+offset_right = 1504.0
+offset_bottom = 800.0
+color = Color(1, 1, 1, 0.227451)
+
+[node name="close" type="Button" parent="Pause"]
+offset_left = 952.0
+offset_top = 16.0
+offset_right = 984.0
+offset_bottom = 48.0
+text = "X"
+
+[node name="Restart" type="Button" parent="Pause"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 488.0
+offset_right = 488.0
+offset_bottom = 536.0
+text = "Restart Level"
+
+[node name="MainMenu" type="Button" parent="Pause"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 488.0
+offset_right = 728.0
+offset_bottom = 536.0
+text = "Main Menu"
+
+[node name="HostileTakeoverLogo" type="Sprite2D" parent="Pause"]
+position = Vector2(520, 144)
+scale = Vector2(0.0948037, 0.0948037)
+texture = ExtResource("5_h4ppr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 272.0
+offset_right = 608.0
+offset_bottom = 320.0
+bbcode_enabled = true
+text = "[center]Paused"
+
+[node name="MusicVolume" type="HSlider" parent="Pause"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 328.0
+offset_right = 618.0
+offset_bottom = 407.0
+value = 100.0
+
+[node name="Name" type="RichTextLabel" parent="Pause/MusicVolume"]
+layout_mode = 0
+offset_right = 182.0
+offset_bottom = 40.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Music"
+
+[node name="Number" type="RichTextLabel" parent="Pause/MusicVolume"]
+layout_mode = 0
+offset_left = 170.0
+offset_right = 206.0
+offset_bottom = 26.0
+text = "100"
+
+[node name="SFXVolume" type="HSlider" parent="Pause"]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 402.0
+offset_right = 621.0
+offset_bottom = 481.0
+value = 100.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause/SFXVolume"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -6.0
+offset_right = 187.0
+offset_bottom = 34.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "SFX"
+
+[node name="Number" type="RichTextLabel" parent="Pause/SFXVolume"]
+layout_mode = 0
+offset_left = 170.0
+offset_right = 206.0
+offset_bottom = 26.0
+text = "100"
+
+[connection signal="button_up" from="DeadScreen/Restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="DeadScreen/MainMenu" to="." method="_on_main_menu_button_up"]
+[connection signal="button_up" from="Pause/close" to="." method="_on_close_button_up"]
+[connection signal="button_up" from="Pause/Restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="Pause/MainMenu" to="." method="_on_main_menu_button_up"]
+[connection signal="value_changed" from="Pause/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="Pause/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
