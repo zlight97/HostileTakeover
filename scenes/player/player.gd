@@ -75,14 +75,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-
 	move_and_slide()
-
 
 func _on_attack_hitbox_area_entered(area: Area2D) -> void:
 	if area is EnemyHurtbox:
 		area.hurt(attack_damage, attack_knockback)
-
 
 func apply_knockback(knockback):#TODO
 	pass
@@ -94,7 +91,7 @@ func _on_hurtbox_apply_damage(damage, knockback) -> void:
 	apply_knockback(knockback)
 	
 func disable_hurtbox():
-	$Hurtbox/CollisionShape2D.disabled = true
+	$AttackHitbox/CollisionShape2D.disabled = true
 
 func _on_unpause_timeout() -> void:
 	can_pause = true
