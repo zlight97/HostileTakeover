@@ -3,6 +3,7 @@ extends PlayerState
 func enter():
 	player.can_act = false
 	player.sprite_change("charge_attack_1")
+	$Timer.start()
 
 func exit():
 	player.disable_hurtbox()
@@ -15,3 +16,7 @@ func physics_update(delta):
 		process_input(delta)
 	if player.can_attack:
 		scene_change.emit(self, "idle")
+
+
+func _on_timer_timeout() -> void:
+	scene_change.emit(self, "idle")

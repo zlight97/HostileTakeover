@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://coit1yxsfwypx"]
+[gd_scene load_steps=89 format=3 uid="uid://coit1yxsfwypx"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_ewvdb"]
 [ext_resource type="Texture2D" uid="uid://c6c4lbcewubrw" path="res://assets/MDWEnemy/jump/jump0002.png" id="1_yl5y2"]
@@ -64,6 +64,7 @@
 [ext_resource type="Script" path="res://scenes/enemies/states/jab.gd" id="62_8cwu2"]
 [ext_resource type="Script" path="res://scenes/enemies/states/dead.gd" id="63_yiju1"]
 [ext_resource type="AudioStream" uid="uid://dweklbxwck5h2" path="res://assets/sounds/combat/punch-1-166694.mp3" id="64_orti3"]
+[ext_resource type="Script" path="res://scenes/enemies/states/end_game.gd" id="64_x7rus"]
 [ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="65_luvur"]
 [ext_resource type="AudioStream" uid="uid://cic2r0evcdtnk" path="res://assets/sounds/combat/punch-6-166699.mp3" id="66_wm3v6"]
 [ext_resource type="AudioStream" uid="uid://cntd8e76daega" path="res://assets/sounds/combat/I Used To Be An Adventurer Like You.wav" id="67_ijejq"]
@@ -1701,6 +1702,9 @@ script = ExtResource("62_8cwu2")
 
 [node name="dead" type="Node" parent="StateMachine"]
 script = ExtResource("63_yiju1")
+
+[node name="end_game" type="Node" parent="StateMachine"]
+script = ExtResource("64_x7rus")
 
 [node name="StateTimer" type="Timer" parent="."]
 one_shot = true

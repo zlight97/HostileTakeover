@@ -9,7 +9,8 @@ var maps = ["res://scenes/main_menu.tscn",
 			"res://scenes/world0.tscn",
 			"res://scenes/world1.tscn",
 			"res://scenes/world2.tscn",
-			"res://scenes/world3.tscn"]
+			"res://scenes/world3.tscn",
+			"res://scenes/end_room.tscn"]
 	
 func _deferred_clear_dialogue():
 	# Immediately free the current scene,

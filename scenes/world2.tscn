@@ -148,14 +148,6 @@ position = Vector2(3401, 880)
 scale = Vector2(0.710938, 0.710938)
 texture = ExtResource("7_5fgms")
 
-[node name="Window1" type="Sprite2D" parent="assetsBG"]
-position = Vector2(2037, 659)
-texture = ExtResource("10_oyn5d")
-
-[node name="Window2" type="Sprite2D" parent="assetsBG"]
-position = Vector2(3801, 612)
-texture = ExtResource("11_3nh0y")
-
 [node name="Plant2" type="Sprite2D" parent="assetsBG"]
 position = Vector2(1702, 891)
 scale = Vector2(0.5, 0.5)
@@ -180,6 +172,14 @@ position = Vector2(99, 876)
 position = Vector2(2120, 989)
 scale = Vector2(0.636719, 0.636719)
 texture = ExtResource("9_1rwwg")
+
+[node name="Window1" type="Sprite2D" parent="assetsFG"]
+position = Vector2(2037, 659)
+texture = ExtResource("10_oyn5d")
+
+[node name="Window2" type="Sprite2D" parent="assetsFG"]
+position = Vector2(3801, 612)
+texture = ExtResource("11_3nh0y")
 
 [connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
 

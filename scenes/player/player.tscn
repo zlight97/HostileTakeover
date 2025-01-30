@@ -1754,6 +1754,9 @@ script = ExtResource("51_adev2")
 [node name="charge_attack1" type="Node" parent="StateMachine"]
 script = ExtResource("52_qc2aw")
 
+[node name="Timer" type="Timer" parent="StateMachine/charge_attack1"]
+one_shot = true
+
 [node name="dead" type="Node" parent="StateMachine"]
 script = ExtResource("68_c7q1a")
 
@@ -1786,4 +1789,5 @@ audio_type = 1
 
 [connection signal="apply_damage" from="Hurtbox" to="." method="_on_hurtbox_apply_damage"]
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
+[connection signal="timeout" from="StateMachine/charge_attack1/Timer" to="StateMachine/charge_attack1" method="_on_timer_timeout"]
 [connection signal="timeout" from="unpause" to="." method="_on_unpause_timeout"]

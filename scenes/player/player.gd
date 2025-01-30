@@ -56,6 +56,9 @@ func move(direction, delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed * delta if speed < stop_speed else stop_speed * delta)
 
+func win():
+	$Hud.win()
+
 func die():#TODO add death animation, fade to black, a death screen etc.
 	alive = false
 	$StateMachine.on_state_change($StateMachine.current_state, "dead")

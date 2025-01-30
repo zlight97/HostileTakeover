@@ -59,6 +59,36 @@ theme_override_font_sizes/bold_font_size = 28
 bbcode_enabled = true
 text = "[b]M.D.W"
 
+[node name="WinScreen" type="ColorRect" parent="."]
+visible = false
+offset_left = 504.0
+offset_top = 232.0
+offset_right = 1504.0
+offset_bottom = 800.0
+color = Color(1, 1, 1, 0.227451)
+
+[node name="MainMenu" type="Button" parent="WinScreen"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 328.0
+offset_right = 608.0
+offset_bottom = 456.0
+text = "Main Menu"
+
+[node name="HostileTakeoverLogo" type="Sprite2D" parent="WinScreen"]
+position = Vector2(520, 144)
+scale = Vector2(0.0948037, 0.0948037)
+texture = ExtResource("5_h4ppr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WinScreen"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 272.0
+offset_right = 656.0
+offset_bottom = 320.0
+bbcode_enabled = true
+text = "[center]You completed the merger!"
+
 [node name="DeadScreen" type="ColorRect" parent="."]
 visible = false
 offset_left = 504.0
@@ -192,6 +222,7 @@ offset_right = 206.0
 offset_bottom = 26.0
 text = "100"
 
+[connection signal="button_up" from="WinScreen/MainMenu" to="." method="_on_main_menu_button_up"]
 [connection signal="button_up" from="DeadScreen/Restart" to="." method="_on_restart_button_up"]
 [connection signal="button_up" from="DeadScreen/MainMenu" to="." method="_on_main_menu_button_up"]
 [connection signal="button_up" from="Pause/close" to="." method="_on_close_button_up"]
