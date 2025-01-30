@@ -7,6 +7,9 @@ func state_timer_triggered():
 	enemy.sprite_change("charge_attack_1")
 	#scene_change.emit(self, "charge_attack_1") #TODO use can_attack or ready to swap states
 
+func exit():
+	enemy.disable_hurtbox()
+	
 func enter():
 	enemy.can_act = false
 	enemy.sprite_change("charge_attack_0")

@@ -21,11 +21,17 @@ var knockedBack = false
 var run_mult = 2.0
 var alive = true
 var can_pause = true
+var blocking = false
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var animation: AnimationPlayer = $Animation
 
 func apply_damage(damage):
+	if blocking:
+		damage = damage/4
+		$Block.play_pitched()
+	else:
+		$Hit.play_pitched()
 	current_health -= damage
 	$Hud.update_health()
 

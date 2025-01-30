@@ -13,7 +13,7 @@ func enter():
 
 func update(delta: float):
 	if get_distance_to_player() < 100:
-		scene_change.emit(self, "jab")
+		scene_change.emit(self, "attack")
 
 func physics_update(delta: float) -> void:
 	enemy.move(pos, delta)

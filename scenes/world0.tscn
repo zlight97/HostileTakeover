@@ -1,0 +1,204 @@
+[gd_scene load_steps=21 format=3 uid="uid://cowya1wptamrw"]
+
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_ychno"]
+[ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player/player.tscn" id="2_qx0ef"]
+[ext_resource type="Texture2D" uid="uid://c4uw081572tvy" path="res://assets/objects/shitstairs.png" id="3_nbpuy"]
+[ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="3_t7v1b"]
+[ext_resource type="PackedScene" uid="uid://coit1yxsfwypx" path="res://scenes/enemies/enemy_mdw.tscn" id="4_r6yus"]
+[ext_resource type="PackedScene" uid="uid://ddft46yphsbs1" path="res://scenes/enemies/enemy_oe.tscn" id="5_6ua7a"]
+[ext_resource type="Texture2D" uid="uid://bsaqlacof10b3" path="res://assets/objects/plant1.png" id="5_ci2h4"]
+[ext_resource type="Texture2D" uid="uid://bulkt6tbj0wbw" path="res://assets/objects/long_table.png" id="6_iym1b"]
+[ext_resource type="Texture2D" uid="uid://bdc6piiv3x4n2" path="res://assets/objects/sofa.png" id="9_t5whg"]
+[ext_resource type="Texture2D" uid="uid://poobl0ngy4h0" path="res://assets/objects/wet_sign.png" id="10_dg6n1"]
+[ext_resource type="Texture2D" uid="uid://weh81gmkj1x1" path="res://assets/objects/window1.png" id="11_sejgv"]
+[ext_resource type="Texture2D" uid="uid://cbkfpai1bovf5" path="res://assets/objects/window2.png" id="12_djgti"]
+
+[sub_resource type="Gradient" id="Gradient_x4rax"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5s3fi"]
+gradient = SubResource("Gradient_x4rax")
+
+[sub_resource type="Gradient" id="Gradient_mxxc0"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ymah2"]
+gradient = SubResource("Gradient_mxxc0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bia1j"]
+size = Vector2(1847, 577)
+
+[sub_resource type="Gradient" id="Gradient_6dhih"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ft4xy"]
+gradient = SubResource("Gradient_6dhih")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixc8l"]
+size = Vector2(2887, 180)
+
+[node name="world0" type="Node2D"]
+script = ExtResource("1_ychno")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(996.5, 485.25)
+scale = Vector2(8.10547, 971.5)
+texture = SubResource("GradientTexture1D_5s3fi")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(998, 988.125)
+scale = Vector2(8.14063, 533.75)
+texture = SubResource("GradientTexture1D_ymah2")
+
+[node name="LoadZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoadZone"]
+position = Vector2(9968, -595)
+shape = SubResource("RectangleShape2D_bia1j")
+
+[node name="CameraLimiter3" parent="." instance=ExtResource("3_t7v1b")]
+position = Vector2(7129, 861)
+limit_x = 0
+limit_y = 0
+
+[node name="CollisionShape2D" parent="CameraLimiter3" index="0"]
+position = Vector2(367.25, 14)
+
+[node name="CameraLimiter2" parent="." instance=ExtResource("3_t7v1b")]
+position = Vector2(4546, 202)
+
+[node name="CollisionShape2D" parent="CameraLimiter2" index="0"]
+position = Vector2(593, 716)
+
+[node name="CamPosition" parent="CameraLimiter2" index="1"]
+position = Vector2(1077, 1129)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(4810.5, 1082.25)
+scale = Vector2(37.7539, 185.5)
+texture = SubResource("GradientTexture1D_ft4xy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1415.5, 1078)
+shape = SubResource("RectangleShape2D_ixc8l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-14, 17, 2, 983, 1739, 985, 1740, 913, 2336, 912, 2336, 986, 5165, 988, 5707, 493, 5702, 994, 6199, 993, 6203, 936, 6468, 936, 6470, 991, 7651, 991, 8973, -328, 9609, -328, 9609, 996, 9625, 1551, -722, 1516)
+
+[node name="Shitstairs" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(7904, 742)
+texture = ExtResource("3_nbpuy")
+
+[node name="Shitstairs2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(8315, 342)
+texture = ExtResource("3_nbpuy")
+
+[node name="EnemyMDW" parent="." instance=ExtResource("4_r6yus")]
+position = Vector2(3020, 292)
+
+[node name="EnemyMDW2" parent="." instance=ExtResource("4_r6yus")]
+position = Vector2(5857, 423)
+
+[node name="EnemyOE" parent="." instance=ExtResource("5_6ua7a")]
+position = Vector2(4641, 338)
+
+[node name="tutorial_text" type="Node" parent="."]
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="tutorial_text"]
+offset_left = 1413.0
+offset_top = 1006.0
+offset_right = 1995.0
+offset_bottom = 1164.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Hold Space - jump"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="tutorial_text"]
+offset_left = 74.0
+offset_top = 1002.0
+offset_right = 1140.0
+offset_bottom = 1160.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "A/D  -  Left/Right							SHIFT - run"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="tutorial_text"]
+offset_left = 2691.0
+offset_top = 1013.0
+offset_right = 4369.0
+offset_bottom = 1171.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "j - jab						u - block									k - Charge Attack"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="tutorial_text"]
+offset_left = 5449.0
+offset_top = 1047.0
+offset_right = 6131.0
+offset_bottom = 1205.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "airborne j - falling attack"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="tutorial_text"]
+offset_left = 7743.0
+offset_top = 1021.0
+offset_right = 8896.0
+offset_bottom = 1179.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Follow stairs to go to the next floor"
+
+[node name="Shitstairs" type="Sprite2D" parent="."]
+position = Vector2(5451, 740)
+texture = ExtResource("3_nbpuy")
+
+[node name="LongTable" type="Sprite2D" parent="."]
+position = Vector2(2042, 932)
+scale = Vector2(0.484375, 0.484375)
+texture = ExtResource("6_iym1b")
+
+[node name="Plant1" type="Sprite2D" parent="."]
+position = Vector2(2042, 882)
+scale = Vector2(0.320313, 0.320313)
+texture = ExtResource("5_ci2h4")
+
+[node name="Shitstairs2" type="Sprite2D" parent="."]
+position = Vector2(8730, -67)
+texture = ExtResource("3_nbpuy")
+
+[node name="Sofa" type="Sprite2D" parent="."]
+position = Vector2(6333, 892)
+scale = Vector2(0.710938, 0.710938)
+texture = ExtResource("9_t5whg")
+
+[node name="Player" parent="." instance=ExtResource("2_qx0ef")]
+position = Vector2(99, 876)
+
+[node name="WetSign" type="Sprite2D" parent="."]
+position = Vector2(594, 989)
+scale = Vector2(0.636719, 0.636719)
+texture = ExtResource("10_dg6n1")
+
+[node name="Window1" type="Sprite2D" parent="."]
+position = Vector2(2685, 636)
+texture = ExtResource("11_sejgv")
+
+[node name="Window2" type="Sprite2D" parent="."]
+position = Vector2(6397, 624)
+texture = ExtResource("12_djgti")
+
+[connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
+
+[editable path="CameraLimiter3"]
+[editable path="CameraLimiter2"]

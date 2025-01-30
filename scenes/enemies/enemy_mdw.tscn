@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://coit1yxsfwypx"]
+[gd_scene load_steps=88 format=3 uid="uid://coit1yxsfwypx"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_ewvdb"]
 [ext_resource type="Texture2D" uid="uid://c6c4lbcewubrw" path="res://assets/MDWEnemy/jump/jump0002.png" id="1_yl5y2"]
@@ -63,9 +63,14 @@
 [ext_resource type="Script" path="res://scenes/enemies/states/flee.gd" id="61_sihfx"]
 [ext_resource type="Script" path="res://scenes/enemies/states/jab.gd" id="62_8cwu2"]
 [ext_resource type="Script" path="res://scenes/enemies/states/dead.gd" id="63_yiju1"]
+[ext_resource type="AudioStream" uid="uid://dweklbxwck5h2" path="res://assets/sounds/combat/punch-1-166694.mp3" id="64_orti3"]
+[ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="65_luvur"]
+[ext_resource type="AudioStream" uid="uid://cic2r0evcdtnk" path="res://assets/sounds/combat/punch-6-166699.mp3" id="66_wm3v6"]
+[ext_resource type="AudioStream" uid="uid://cntd8e76daega" path="res://assets/sounds/combat/I Used To Be An Adventurer Like You.wav" id="67_ijejq"]
+[ext_resource type="AudioStream" uid="uid://cavqic6682r2m" path="res://assets/sounds/combat/punch-2-123106.mp3" id="67_mrwkp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy5hk"]
-size = Vector2(57, 138)
+size = Vector2(21.5, 138)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i1ppr"]
 animations = [{
@@ -284,9 +289,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awkyn"]
+size = Vector2(90, 138)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t73k7"]
-radius = 12.9596
-height = 65.498
+radius = 9.02416
+height = 57.2627
 
 [sub_resource type="Animation" id="Animation_7nfal"]
 length = 0.001
@@ -886,6 +894,20 @@ tracks/12/keys = {
 "update": 0,
 "values": [57.2627, 83.1613]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Charge")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_g5ajd"]
 resource_name = "dead"
@@ -1105,6 +1127,20 @@ tracks/12/keys = {
 "update": 0,
 "values": [65.498, 65.498]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Jab")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_vhj0l"]
 resource_name = "jab1"
@@ -1265,6 +1301,20 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [65.498]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Jab")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_7vfr0"]
@@ -1427,6 +1477,20 @@ tracks/12/keys = {
 "update": 0,
 "values": [65.498, 81.0417]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Jab")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4qj6v"]
 resource_name = "jump"
@@ -1516,6 +1580,46 @@ tracks/1/keys = {
 "values": [&"walk"]
 }
 
+[sub_resource type="Animation" id="Animation_t5n0s"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hurt"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackHitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_diiyw"]
 _data = {
 "RESET": SubResource("Animation_7nfal"),
@@ -1524,6 +1628,7 @@ _data = {
 "charge_attack_0": SubResource("Animation_x1y06"),
 "charge_attack_1": SubResource("Animation_hgb2e"),
 "dead": SubResource("Animation_g5ajd"),
+"hurt": SubResource("Animation_t5n0s"),
 "idle": SubResource("Animation_0q2bk"),
 "jab0": SubResource("Animation_t0een"),
 "jab1": SubResource("Animation_vhj0l"),
@@ -1542,28 +1647,28 @@ attack_knockback = 4
 can_act = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.28882e-05, -0.233971)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_iy5hk")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.28882e-05, -0.233971)
 scale = Vector2(0.366102, 0.366102)
 sprite_frames = SubResource("SpriteFrames_i1ppr")
-animation = &"death"
+animation = &"charge_attack"
 autoplay = "jump"
+frame = 5
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("55_uqxhb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(26.5, -0.233971)
-shape = SubResource("RectangleShape2D_iy5hk")
+shape = SubResource("RectangleShape2D_awkyn")
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
-position = Vector2(27, -43)
-rotation = 4.98117
+position = Vector2(22, -34)
+rotation = 4.90612
 shape = SubResource("CapsuleShape2D_t73k7")
 disabled = true
 
@@ -1585,13 +1690,13 @@ script = ExtResource("58_yhrhx")
 [node name="walk" type="Node" parent="StateMachine"]
 script = ExtResource("59_ewpf4")
 
-[node name="charge_attack" type="Node" parent="StateMachine"]
+[node name="special" type="Node" parent="StateMachine"]
 script = ExtResource("60_ohqij")
 
 [node name="flee" type="Node" parent="StateMachine"]
 script = ExtResource("61_sihfx")
 
-[node name="jab" type="Node" parent="StateMachine"]
+[node name="attack" type="Node" parent="StateMachine"]
 script = ExtResource("62_8cwu2")
 
 [node name="dead" type="Node" parent="StateMachine"]
@@ -1600,6 +1705,32 @@ script = ExtResource("63_yiju1")
 [node name="StateTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Jab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("64_orti3")
+script = ExtResource("65_luvur")
+audio_type = 1
+
+[node name="Charge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("66_wm3v6")
+script = ExtResource("65_luvur")
+audio_type = 1
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("67_ijejq")
+script = ExtResource("65_luvur")
+audio_type = 1
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("67_mrwkp")
+script = ExtResource("65_luvur")
+audio_type = 1
+
 [connection signal="apply_damage" from="Hurtbox" to="." method="_on_hurtbox_apply_damage"]
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
+[connection signal="animation_changed" from="Animation" to="." method="_on_animation_animation_changed"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

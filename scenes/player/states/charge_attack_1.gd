@@ -13,3 +13,5 @@ func physics_update(delta):
 		if player.velocity.x != 0:
 			scene_change.emit(self,"walk")
 		process_input(delta)
+	if player.can_attack:
+		scene_change.emit(self, "idle")

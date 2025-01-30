@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://b6ucji7xykjcq"]
+[gd_scene load_steps=94 format=3 uid="uid://b6ucji7xykjcq"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_an811"]
 [ext_resource type="Texture2D" uid="uid://bj1yb2fcdr42t" path="res://assets/MDW/jump/jump0002.png" id="2_gwyt2"]
@@ -68,12 +68,18 @@
 [ext_resource type="Script" path="res://scenes/player/states/run.gd" id="58_ibi6d"]
 [ext_resource type="PackedScene" uid="uid://dnj67jm44rwpt" path="res://scenes/player/hud.tscn" id="67_ug417"]
 [ext_resource type="Script" path="res://scenes/player/states/dead.gd" id="68_c7q1a"]
+[ext_resource type="Script" path="res://scenes/player/states/block.gd" id="69_bld8x"]
+[ext_resource type="AudioStream" uid="uid://dweklbxwck5h2" path="res://assets/sounds/combat/punch-1-166694.mp3" id="70_12s0b"]
+[ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="71_khhih"]
+[ext_resource type="AudioStream" uid="uid://cavqic6682r2m" path="res://assets/sounds/combat/punch-2-123106.mp3" id="72_fn2bo"]
+[ext_resource type="AudioStream" uid="uid://cic2r0evcdtnk" path="res://assets/sounds/combat/punch-6-166699.mp3" id="72_ilr2a"]
+[ext_resource type="AudioStream" uid="uid://bgvvcxtwlk85a" path="res://assets/sounds/combat/punch-7-166700.mp3" id="73_f66ph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhy7a"]
 size = Vector2(110, 138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6xoa"]
-size = Vector2(110, 138)
+size = Vector2(35, 138)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kh74q"]
 animations = [{
@@ -590,6 +596,20 @@ tracks/10/keys = {
 "update": 0,
 "values": [65.498, 77.2736]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Charge")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_kt3en"]
 resource_name = "airborne"
@@ -884,15 +904,15 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = false
+tracks/10/enabled = true
 tracks/10/path = NodePath(".:can_attack")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [false, false, true]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -917,6 +937,20 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [57.2627, 83.1613]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Charge")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_di8nj"]
@@ -1137,6 +1171,20 @@ tracks/12/keys = {
 "update": 0,
 "values": [65.498, 65.498]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Jab")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_vhj0l"]
 resource_name = "jab1"
@@ -1297,6 +1345,20 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [65.498]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Jab")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_7vfr0"]
@@ -1459,6 +1521,20 @@ tracks/12/keys = {
 "update": 0,
 "values": [65.498, 81.0417]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Jab")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_pitched"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4qj6v"]
 resource_name = "jump"
@@ -1520,7 +1596,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_7jfus"]
 resource_name = "walk"
-length = 0.7
+length = 1.4
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -1530,10 +1606,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1548,11 +1624,40 @@ tracks/1/keys = {
 "values": [&"walk"]
 }
 
+[sub_resource type="Animation" id="Animation_otm60"]
+resource_name = "block"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"block"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_diiyw"]
 _data = {
 "RESET": SubResource("Animation_7nfal"),
 "air_attack": SubResource("Animation_gol8j"),
 "airborne": SubResource("Animation_kt3en"),
+"block": SubResource("Animation_otm60"),
 "charge_attack_0": SubResource("Animation_x1y06"),
 "charge_attack_1": SubResource("Animation_hgb2e"),
 "dead": SubResource("Animation_di8nj"),
@@ -1566,6 +1671,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+platform_on_leave = 2
 script = ExtResource("1_an811")
 attack_damage = 100.0
 attack_knockback = 0
@@ -1579,7 +1685,6 @@ position = Vector2(-2.28882e-05, -0.233971)
 shape = SubResource("RectangleShape2D_fhy7a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.28882e-05, -0.233971)
 shape = SubResource("RectangleShape2D_b6xoa")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -1652,9 +1757,32 @@ script = ExtResource("52_qc2aw")
 [node name="dead" type="Node" parent="StateMachine"]
 script = ExtResource("68_c7q1a")
 
+[node name="block" type="Node" parent="StateMachine"]
+script = ExtResource("69_bld8x")
+
 [node name="unpause" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Jab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("70_12s0b")
+script = ExtResource("71_khhih")
+audio_type = 1
+
+[node name="Charge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("72_ilr2a")
+script = ExtResource("71_khhih")
+audio_type = 1
+
+[node name="Block" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("73_f66ph")
+script = ExtResource("71_khhih")
+audio_type = 1
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("72_fn2bo")
+script = ExtResource("71_khhih")
+audio_type = 1
 
 [connection signal="apply_damage" from="Hurtbox" to="." method="_on_hurtbox_apply_damage"]
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]

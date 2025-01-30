@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cntd8e76daega"
+path="res://.godot/imported/I Used To Be An Adventurer Like You.wav-9b4fea6a502c427206d55e7cb8030516.sample"
+
+[deps]
+
+source_file="res://assets/sounds/combat/I Used To Be An Adventurer Like You.wav"
+dest_files=["res://.godot/imported/I Used To Be An Adventurer Like You.wav-9b4fea6a502c427206d55e7cb8030516.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

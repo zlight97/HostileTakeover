@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnj67jm44rwpt"]
+[gd_scene load_steps=10 format=3 uid="uid://dnj67jm44rwpt"]
 
 [ext_resource type="Script" path="res://scenes/player/hud.gd" id="1_jbhkh"]
 [ext_resource type="Texture2D" uid="uid://7kyumotos6wh" path="res://assets/icons/m.d.w icon.png" id="1_wvy6c"]
 [ext_resource type="FontFile" uid="uid://bscmb3j8u7fjq" path="res://assets/fonts/aspekta/ttf/Aspekta-300.ttf" id="3_xgvsj"]
 [ext_resource type="FontFile" uid="uid://bjaqt3ok1wqm1" path="res://assets/fonts/aspekta/ttf/Aspekta-950.ttf" id="4_eiw70"]
 [ext_resource type="Texture2D" uid="uid://bbqc12ili85u8" path="res://assets/icons/Hostile Takeover logo.png" id="5_h4ppr"]
+[ext_resource type="Script" path="res://scenes/music_volume_slider.gd" id="6_vuy4q"]
+[ext_resource type="Script" path="res://scenes/sfx_volume_slider.gd" id="7_1ej18"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36r0a"]
 
@@ -105,6 +107,7 @@ offset_bottom = 800.0
 color = Color(1, 1, 1, 0.227451)
 
 [node name="close" type="Button" parent="Pause"]
+layout_mode = 0
 offset_left = 952.0
 offset_top = 16.0
 offset_right = 984.0
@@ -148,6 +151,7 @@ offset_top = 328.0
 offset_right = 618.0
 offset_bottom = 407.0
 value = 100.0
+script = ExtResource("6_vuy4q")
 
 [node name="Name" type="RichTextLabel" parent="Pause/MusicVolume"]
 layout_mode = 0
@@ -170,6 +174,7 @@ offset_top = 402.0
 offset_right = 621.0
 offset_bottom = 481.0
 value = 100.0
+script = ExtResource("7_1ej18")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Pause/SFXVolume"]
 layout_mode = 0

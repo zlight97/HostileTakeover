@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgktfqj60tbbh"]
+[gd_scene load_steps=7 format=3 uid="uid://bgktfqj60tbbh"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_vwd5p"]
 [ext_resource type="Texture2D" uid="uid://bbqc12ili85u8" path="res://assets/icons/Hostile Takeover logo.png" id="2_j4lp7"]
+[ext_resource type="Script" path="res://scenes/music_volume_slider.gd" id="3_c18ms"]
 
 [sub_resource type="Gradient" id="Gradient_lwdf8"]
 offsets = PackedFloat32Array(1)
@@ -47,6 +48,7 @@ offset_top = 784.0
 offset_right = 381.0
 offset_bottom = 863.0
 value = 100.0
+script = ExtResource("3_c18ms")
 
 [node name="Name" type="RichTextLabel" parent="MusicVolume"]
 layout_mode = 0
@@ -68,6 +70,7 @@ offset_top = 858.0
 offset_right = 384.0
 offset_bottom = 937.0
 value = 100.0
+script = ExtResource("3_c18ms")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SFXVolume"]
 layout_mode = 0

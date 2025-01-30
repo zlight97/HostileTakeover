@@ -1,9 +1,9 @@
 extends AudioStreamPlayer
-
-var pitch_low = .8
-var pitch_hi = 1.2
+class_name PitchAudioStreamPlayer
+@export var pitch_low = .8
+@export var pitch_hi = 1.2
 var lastPitch = 1
-var pitch_min_diff = .1
+@export var pitch_min_diff = .1
 var using_timer = false
 var can_play = false
 
@@ -28,19 +28,20 @@ func play_pitched(from_position=0.0):
 	if audio_type == volume_type.NONE:
 		pass
 	elif audio_type == volume_type.SFX:
-		volume_db = float(settings.sfx_volume) / 100.
+		volume_db = (40*float(settings.sfx_volume) / 100.)-40
 	elif audio_type == volume_type.MUSIC:
-		volume_db = float(settings.music_volume) / 100.
+		volume_db = (40*float(settings.music_volume) / 100.)-40
 		play(from_position)
 		return
 		
 	while abs(lastPitch - pitch_scale) < pitch_min_diff:
 		pitch_scale = randf_range(pitch_low, pitch_hi)
 	lastPitch = pitch_scale
+	play(from_position)
 	if not playing and (not using_timer or can_play):
-		play(from_position)
 		can_play = false
-		$Timer.start()
+		if using_timer:
+			$Timer.start()
 
 func set_pitches(low=.8,high=1.2,diff=.1):
 	pitch_low = low

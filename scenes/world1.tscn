@@ -1,0 +1,160 @@
+[gd_scene load_steps=20 format=3 uid="uid://tj7yeloel2gg"]
+
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_gc1wv"]
+[ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_ygj04"]
+[ext_resource type="Texture2D" uid="uid://c4uw081572tvy" path="res://assets/objects/shitstairs.png" id="3_38jyf"]
+[ext_resource type="PackedScene" uid="uid://ddft46yphsbs1" path="res://scenes/enemies/enemy_oe.tscn" id="5_llkxr"]
+[ext_resource type="Texture2D" uid="uid://bulkt6tbj0wbw" path="res://assets/objects/long_table.png" id="6_uuvnn"]
+[ext_resource type="Texture2D" uid="uid://bsaqlacof10b3" path="res://assets/objects/plant1.png" id="7_tfai2"]
+[ext_resource type="Texture2D" uid="uid://bdc6piiv3x4n2" path="res://assets/objects/sofa.png" id="8_6kvby"]
+[ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player/player.tscn" id="9_2sj5r"]
+[ext_resource type="Texture2D" uid="uid://poobl0ngy4h0" path="res://assets/objects/wet_sign.png" id="10_42vnb"]
+[ext_resource type="Texture2D" uid="uid://weh81gmkj1x1" path="res://assets/objects/window1.png" id="11_uwyb4"]
+[ext_resource type="Texture2D" uid="uid://cbkfpai1bovf5" path="res://assets/objects/window2.png" id="12_2cle1"]
+
+[sub_resource type="Gradient" id="Gradient_x4rax"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5s3fi"]
+gradient = SubResource("Gradient_x4rax")
+
+[sub_resource type="Gradient" id="Gradient_mxxc0"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ymah2"]
+gradient = SubResource("Gradient_mxxc0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bia1j"]
+size = Vector2(1847, 577)
+
+[sub_resource type="Gradient" id="Gradient_6dhih"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ft4xy"]
+gradient = SubResource("Gradient_6dhih")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixc8l"]
+size = Vector2(2887, 180)
+
+[node name="world0" type="Node2D"]
+script = ExtResource("1_gc1wv")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(996.5, 485.25)
+scale = Vector2(8.10547, 971.5)
+texture = SubResource("GradientTexture1D_5s3fi")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(998, 988.125)
+scale = Vector2(8.14063, 533.75)
+texture = SubResource("GradientTexture1D_ymah2")
+
+[node name="LoadZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoadZone"]
+position = Vector2(7389, -515)
+shape = SubResource("RectangleShape2D_bia1j")
+
+[node name="CameraLimiter3" parent="." instance=ExtResource("2_ygj04")]
+position = Vector2(6899, 1747)
+limit_x = 0
+limit_y = 0
+
+[node name="CollisionShape2D" parent="CameraLimiter3" index="0"]
+position = Vector2(367.25, 14)
+
+[node name="CameraLimiter2" parent="." instance=ExtResource("2_ygj04")]
+position = Vector2(4525, 1147)
+
+[node name="CollisionShape2D" parent="CameraLimiter2" index="0"]
+position = Vector2(593, 716)
+
+[node name="CamPosition" parent="CameraLimiter2" index="1"]
+position = Vector2(1077, 1129)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(4810.5, 1082.25)
+scale = Vector2(37.7539, 185.5)
+texture = SubResource("GradientTexture1D_ft4xy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1415.5, 1078)
+shape = SubResource("RectangleShape2D_ixc8l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-14, 17, 2, 983, 1739, 985, 1740, 913, 2336, 912, 2336, 986, 3268.85, 986.659, 3271, 925, 3538, 922, 3533, 980, 5165, 988, 6545, -303, 6796, 978, 7651, 991, 8973, -328, 9609, -328, 9609, 996, 9625, 1551, -722, 1516)
+
+[node name="Shitstairs" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(5459, 737)
+texture = ExtResource("3_38jyf")
+
+[node name="Shitstairs2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(5870, 337)
+texture = ExtResource("3_38jyf")
+
+[node name="EnemyOE" parent="." instance=ExtResource("5_llkxr")]
+position = Vector2(1401, 910)
+
+[node name="EnemyOE2" parent="." instance=ExtResource("5_llkxr")]
+position = Vector2(2285, 802)
+
+[node name="EnemyOE3" parent="." instance=ExtResource("5_llkxr")]
+position = Vector2(2521, 846)
+
+[node name="EnemyOE4" parent="." instance=ExtResource("5_llkxr")]
+position = Vector2(2897, 862)
+
+[node name="Shitstairs" type="Sprite2D" parent="."]
+position = Vector2(5451, 740)
+texture = ExtResource("3_38jyf")
+
+[node name="LongTable" type="Sprite2D" parent="."]
+position = Vector2(2042, 932)
+scale = Vector2(0.484375, 0.484375)
+texture = ExtResource("6_uuvnn")
+
+[node name="Plant1" type="Sprite2D" parent="."]
+position = Vector2(2042, 882)
+scale = Vector2(0.320313, 0.320313)
+texture = ExtResource("7_tfai2")
+
+[node name="Shitstairs2" type="Sprite2D" parent="."]
+position = Vector2(6285, -72)
+texture = ExtResource("3_38jyf")
+
+[node name="Sofa" type="Sprite2D" parent="."]
+position = Vector2(3401, 880)
+scale = Vector2(0.710938, 0.710938)
+texture = ExtResource("8_6kvby")
+
+[node name="Player" parent="." instance=ExtResource("9_2sj5r")]
+position = Vector2(99, 876)
+
+[node name="WetSign" type="Sprite2D" parent="."]
+position = Vector2(594, 989)
+scale = Vector2(0.636719, 0.636719)
+texture = ExtResource("10_42vnb")
+
+[node name="Window1" type="Sprite2D" parent="."]
+position = Vector2(2037, 659)
+texture = ExtResource("11_uwyb4")
+
+[node name="Window2" type="Sprite2D" parent="."]
+position = Vector2(3801, 612)
+texture = ExtResource("12_2cle1")
+
+[connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
+
+[editable path="CameraLimiter3"]
+[editable path="CameraLimiter2"]

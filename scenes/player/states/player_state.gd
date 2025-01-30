@@ -18,3 +18,5 @@ func process_input(delta: float, running = false):
 		scene_change.emit(self, "jump")
 	elif Input.is_action_just_pressed("2"):
 		scene_change.emit(self,"charge_attack0")
+	elif Input.is_action_just_pressed("3"):
+		scene_change.emit(self,"block")

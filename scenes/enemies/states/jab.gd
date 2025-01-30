@@ -7,6 +7,9 @@ func enter():
 	enemy.can_act = false
 	enemy.sprite_change("jab0")
 	will_attack_again = randi()%3 == 0
+
+func exit():
+	enemy.disable_hurtbox()
 	
 func update(delta):
 	if enemy.can_attack and will_attack_again and i<2:

@@ -4,3 +4,8 @@ extends Node2D
 
 func _ready():
 	get_tree().paused = false
+
+
+func _on_load_zone_body_entered(body: Node2D) -> void:
+	if body is Player:
+		get_node("/root/SceneManager").load_next_zone()
