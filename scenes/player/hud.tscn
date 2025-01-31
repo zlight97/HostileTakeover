@@ -57,7 +57,7 @@ theme_override_fonts/bold_font = ExtResource("4_eiw70")
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 28
 bbcode_enabled = true
-text = "[b]M.D.W"
+text = "[b]W.O.D"
 
 [node name="WinScreen" type="ColorRect" parent="."]
 visible = false

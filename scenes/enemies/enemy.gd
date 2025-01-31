@@ -34,8 +34,9 @@ var last_animation_time = 0
 @onready var state_timer: Timer = $StateTimer
 
 func _ready() -> void:
-	await owner.ready
-	player = owner.player
+	if not player:
+		await owner.ready
+		player = owner.player
 	if player.global_position.x < global_position.x:
 		facingRight = false
 		scale.x = -1
@@ -82,6 +83,8 @@ func die():
 func _process(delta: float) -> void:
 	if current_health <= 0 and alive:
 		die()
+	elif not alive and $Animation.current_animation == "dead":
+		$StateMachine.on_state_change($StateMachine.current_state, "dead")
 
 func _physics_process(delta: float) -> void:
 	if facingRight!=get_facing_dir():

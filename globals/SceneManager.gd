@@ -6,11 +6,13 @@ var player = null
 
 var next_map_index = 0
 var maps = ["res://scenes/main_menu.tscn",
-			"res://scenes/world0.tscn",
-			"res://scenes/world1.tscn",
-			"res://scenes/world2.tscn",
-			"res://scenes/world3.tscn",
-			"res://scenes/end_room.tscn"]
+			"res://scenes/worlds/into.tscn",
+			"res://scenes/worlds/world0.tscn",
+			"res://scenes/worlds/world1.tscn",
+			"res://scenes/worlds/world2.tscn",
+			"res://scenes/worlds/world3.tscn",
+			"res://scenes/worlds/world4.tscn",
+			"res://scenes/worlds/end_room.tscn"]
 	
 func _deferred_clear_dialogue():
 	# Immediately free the current scene,

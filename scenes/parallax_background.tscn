@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://m0o7ioos2nyk"]
+
+[ext_resource type="Texture2D" uid="uid://bf0fmws60var1" path="res://assets/images/background_window.png" id="1_ahf6k"]
+[ext_resource type="Texture2D" uid="uid://cbkfpai1bovf5" path="res://assets/objects/window2.png" id="2_78bhn"]
+
+[sub_resource type="Curve" id="Curve_o6t3g"]
+_data = [Vector2(0.763736, 0.307692), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_j6em7"]
+curve = SubResource("Curve_o6t3g")
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(0, -120)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1764.97, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(866, 481)
+texture = ExtResource("1_ahf6k")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(3000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(851, 566)
+texture = ExtResource("2_78bhn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(2139, 813)
+scale = Vector2(5.99219, 5913)
+texture = SubResource("CurveTexture_j6em7")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(-436, 841)
+scale = Vector2(5.99219, 5913)
+texture = SubResource("CurveTexture_j6em7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(647, -822.25)
+scale = Vector2(5.99219, 2420.5)
+texture = SubResource("CurveTexture_j6em7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(755, 1943)
+scale = Vector2(5.99219, 2420.5)
+texture = SubResource("CurveTexture_j6em7")

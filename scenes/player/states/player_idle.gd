@@ -4,6 +4,8 @@ func enter():
 	player.sprite_change("idle")
 
 func physics_update(delta: float) -> void:
+	if player.stop_movement:
+		return
 	if not player.is_on_floor():
 		scene_change.emit(self, "airborne")
 	elif player.velocity.x != 0:

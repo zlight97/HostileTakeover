@@ -1,0 +1,151 @@
+[gd_scene load_steps=16 format=3 uid="uid://dmesi0o6p5w0"]
+
+[ext_resource type="Script" path="res://scenes/worlds/world.gd" id="1_1l2ny"]
+[ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_0rt3y"]
+[ext_resource type="PackedScene" uid="uid://m0o7ioos2nyk" path="res://scenes/parallax_background.tscn" id="2_i2eol"]
+[ext_resource type="PackedScene" uid="uid://ddft46yphsbs1" path="res://scenes/enemies/enemy_oe.tscn" id="3_udji1"]
+[ext_resource type="Script" path="res://scenes/spawner.gd" id="3_vq6lv"]
+[ext_resource type="Texture2D" uid="uid://c4uw081572tvy" path="res://assets/objects/shitstairs.png" id="5_ixap8"]
+[ext_resource type="Texture2D" uid="uid://bulkt6tbj0wbw" path="res://assets/objects/long_table.png" id="6_cx4qp"]
+[ext_resource type="Texture2D" uid="uid://bsaqlacof10b3" path="res://assets/objects/plant1.png" id="7_1x82l"]
+[ext_resource type="Texture2D" uid="uid://7bp23jvwlh8v" path="res://assets/objects/cup.png" id="11_d48ck"]
+[ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player/player.tscn" id="14_6l2fw"]
+[ext_resource type="Texture2D" uid="uid://poobl0ngy4h0" path="res://assets/objects/wet_sign.png" id="15_0otou"]
+[ext_resource type="Texture2D" uid="uid://duykkoranauk3" path="res://assets/objects/plant2.png" id="16_cd5vb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bia1j"]
+size = Vector2(1847, 577)
+
+[sub_resource type="Gradient" id="Gradient_6dhih"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ft4xy"]
+gradient = SubResource("Gradient_6dhih")
+
+[node name="world4" type="Node2D"]
+script = ExtResource("1_1l2ny")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_i2eol")]
+offset = Vector2(500, 0)
+transform = Transform2D(1, 0, 0, 1, 500, 0)
+
+[node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2(866, 1000)
+
+[node name="LoadZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoadZone"]
+position = Vector2(7006, -466)
+shape = SubResource("RectangleShape2D_bia1j")
+
+[node name="CameraLimiter3" parent="." instance=ExtResource("2_0rt3y")]
+position = Vector2(6899, 1747)
+limit_x = 0
+limit_y = 0
+
+[node name="CollisionShape2D" parent="CameraLimiter3" index="0"]
+position = Vector2(-3807, -825)
+scale = Vector2(1, 11.9)
+
+[node name="CameraLimiter2" parent="." node_paths=PackedStringArray("map") instance=ExtResource("2_0rt3y")]
+position = Vector2(4525, 1147)
+map = NodePath("..")
+
+[node name="CollisionShape2D" parent="CameraLimiter2" index="0"]
+position = Vector2(-2879, -237.5)
+scale = Vector2(1, 9.61)
+
+[node name="CamPosition" parent="CameraLimiter2" index="1"]
+position = Vector2(-3429, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(4810.5, 2735.75)
+scale = Vector2(37.7539, 3492.5)
+texture = SubResource("GradientTexture1D_ft4xy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-14, 17, 1, 990, 4841, 996, 6133, -268, 9609, -328, 9609, 996, 9625, 1551, -722, 1516)
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("3_vq6lv")
+
+[node name="WaveBoundary" type="StaticBody2D" parent="Spawner"]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spawner/WaveBoundary"]
+polygon = PackedVector2Array(-4, 4, 1098, -1673, 1086, 1382, 2950, 1376, 2971, -1665, 3559, -20, 3505, 1760, 568, 1736)
+
+[node name="Timer" type="Timer" parent="Spawner"]
+one_shot = true
+
+[node name="EnemyOE2" parent="." instance=ExtResource("3_udji1")]
+position = Vector2(2285, 802)
+
+[node name="EnemyOE5" parent="." instance=ExtResource("3_udji1")]
+position = Vector2(1850, 819)
+
+[node name="EnemyOE3" parent="." instance=ExtResource("3_udji1")]
+position = Vector2(2521, 846)
+
+[node name="assetsBG" type="Node" parent="."]
+
+[node name="Shitstairs" type="Sprite2D" parent="assetsBG"]
+position = Vector2(5064, 795)
+texture = ExtResource("5_ixap8")
+
+[node name="LongTable" type="Sprite2D" parent="assetsBG"]
+position = Vector2(2042, 932)
+scale = Vector2(0.484375, 0.484375)
+texture = ExtResource("6_cx4qp")
+
+[node name="Plant1" type="Sprite2D" parent="assetsBG"]
+position = Vector2(2042, 882)
+scale = Vector2(0.320313, 0.320313)
+texture = ExtResource("7_1x82l")
+
+[node name="Shitstairs2" type="Sprite2D" parent="assetsBG"]
+position = Vector2(5898, -17)
+texture = ExtResource("5_ixap8")
+
+[node name="Cup" type="Sprite2D" parent="assetsBG"]
+position = Vector2(2248, 905)
+scale = Vector2(0.250002, 0.285717)
+texture = ExtResource("11_d48ck")
+
+[node name="Shitstairs3" type="Sprite2D" parent="assetsBG"]
+position = Vector2(5483, 392)
+texture = ExtResource("5_ixap8")
+
+[node name="Player" parent="." instance=ExtResource("14_6l2fw")]
+z_index = 1
+position = Vector2(99, 876)
+
+[node name="assetsFG" type="Node" parent="."]
+
+[node name="WetSign" type="Sprite2D" parent="assetsFG"]
+z_index = 2
+position = Vector2(1581, 980)
+scale = Vector2(0.636719, 0.636719)
+texture = ExtResource("15_0otou")
+
+[node name="Plant2" type="Sprite2D" parent="assetsFG"]
+position = Vector2(1702, 891)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_cd5vb")
+
+[node name="Plant3" type="Sprite2D" parent="assetsFG"]
+position = Vector2(2368, 893)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_cd5vb")
+
+[connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+
+[editable path="ParallaxBackground"]
+[editable path="CameraLimiter3"]
+[editable path="CameraLimiter2"]

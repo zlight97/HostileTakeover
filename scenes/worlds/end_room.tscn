@@ -1,0 +1,108 @@
+[gd_scene load_steps=16 format=3 uid="uid://b7kt0ovrb2w03"]
+
+[ext_resource type="Script" path="res://scenes/worlds/world.gd" id="1_2jvb1"]
+[ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_03yfv"]
+[ext_resource type="PackedScene" uid="uid://m0o7ioos2nyk" path="res://scenes/parallax_background.tscn" id="2_bxtcq"]
+[ext_resource type="Texture2D" uid="uid://c4uw081572tvy" path="res://assets/objects/shitstairs.png" id="3_hrjoa"]
+[ext_resource type="PackedScene" uid="uid://coit1yxsfwypx" path="res://scenes/enemies/enemy_mdw.tscn" id="4_px3xl"]
+[ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player/player.tscn" id="6_rpoo0"]
+[ext_resource type="Texture2D" uid="uid://poobl0ngy4h0" path="res://assets/objects/wet_sign.png" id="7_q1jkt"]
+[ext_resource type="Texture2D" uid="uid://bulkt6tbj0wbw" path="res://assets/objects/long_table.png" id="8_0odnm"]
+[ext_resource type="Texture2D" uid="uid://dbxt165pyv3gy" path="res://assets/objects/plant3.png" id="9_8orsh"]
+[ext_resource type="Texture2D" uid="uid://bsaqlacof10b3" path="res://assets/objects/plant1.png" id="10_gcjvq"]
+[ext_resource type="Texture2D" uid="uid://duykkoranauk3" path="res://assets/objects/plant2.png" id="11_2tgop"]
+[ext_resource type="Texture2D" uid="uid://bdc6piiv3x4n2" path="res://assets/objects/sofa.png" id="12_mymdy"]
+
+[sub_resource type="Gradient" id="Gradient_6dhih"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ft4xy"]
+gradient = SubResource("Gradient_6dhih")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixc8l"]
+size = Vector2(2887, 180)
+
+[node name="end_room" type="Node2D"]
+script = ExtResource("1_2jvb1")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_bxtcq")]
+
+[node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2(866, 1065)
+
+[node name="CameraLimiter3" parent="." instance=ExtResource("2_03yfv")]
+position = Vector2(6899, 1747)
+limit_x = 0
+limit_y = 0
+
+[node name="CollisionShape2D" parent="CameraLimiter3" index="0"]
+position = Vector2(367.25, 14)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1420, 2410.75)
+scale = Vector2(11.2656, 2842.5)
+texture = SubResource("GradientTexture1D_ft4xy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1415.5, 1078)
+shape = SubResource("RectangleShape2D_ixc8l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-14, 17, -3, 998, 1874, 998, 1858, 211, 2835, -14, 3239, 22, 3291, 1570, -722, 1516)
+
+[node name="Shitstairs2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(8342, 345)
+texture = ExtResource("3_hrjoa")
+
+[node name="enemyMDW" parent="." instance=ExtResource("4_px3xl")]
+z_index = 1
+position = Vector2(1357, 855)
+scale = Vector2(2.005, 2.005)
+
+[node name="StateMachine" parent="enemyMDW" index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("end_game")
+
+[node name="Player" parent="." instance=ExtResource("6_rpoo0")]
+z_index = 1
+position = Vector2(99, 876)
+
+[node name="assetsFG" type="Node" parent="."]
+
+[node name="WetSign" type="Sprite2D" parent="assetsFG"]
+z_index = 2
+position = Vector2(1368, 1009)
+texture = ExtResource("7_q1jkt")
+
+[node name="LongTable" type="Sprite2D" parent="assetsFG"]
+z_index = 2
+position = Vector2(1002.5, 948)
+scale = Vector2(0.39, 1)
+texture = ExtResource("8_0odnm")
+
+[node name="Plant3" type="Sprite2D" parent="assetsFG"]
+z_index = 2
+position = Vector2(1001.5, 854)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("9_8orsh")
+
+[node name="Plant1" type="Sprite2D" parent="assetsFG"]
+z_index = 2
+position = Vector2(2264, 916)
+texture = ExtResource("10_gcjvq")
+
+[node name="Plant2" type="Sprite2D" parent="assetsFG"]
+z_index = 2
+position = Vector2(1858, 792)
+texture = ExtResource("11_2tgop")
+
+[node name="Sofa" type="Sprite2D" parent="assetsFG"]
+z_index = 2
+position = Vector2(2054, 867)
+texture = ExtResource("12_mymdy")
+
+[editable path="ParallaxBackground"]
+[editable path="CameraLimiter3"]
+[editable path="enemyMDW"]

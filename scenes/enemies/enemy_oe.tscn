@@ -909,8 +909,6 @@ _data = {
 }
 
 [node name="EnemyOE" type="CharacterBody2D"]
-collision_layer = 7
-collision_mask = 7
 script = ExtResource("1_1xqun")
 attack_damage = 20.0
 can_act = false

@@ -1640,8 +1640,6 @@ _data = {
 }
 
 [node name="enemyMDW" type="CharacterBody2D"]
-collision_layer = 3
-collision_mask = 3
 script = ExtResource("1_ewvdb")
 attack_damage = 7.0
 attack_knockback = 4

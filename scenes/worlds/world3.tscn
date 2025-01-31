@@ -1,68 +1,43 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc6ha8hk347m4"]
+[gd_scene load_steps=19 format=3 uid="uid://cc6ha8hk347m4"]
 
-[ext_resource type="Script" path="res://scenes/world.gd" id="1_qqntu"]
+[ext_resource type="Script" path="res://scenes/worlds/world.gd" id="1_qqntu"]
 [ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_c8xn8"]
+[ext_resource type="PackedScene" uid="uid://m0o7ioos2nyk" path="res://scenes/parallax_background.tscn" id="2_ficrh"]
 [ext_resource type="Texture2D" uid="uid://c4uw081572tvy" path="res://assets/objects/shitstairs.png" id="3_mwmqo"]
 [ext_resource type="PackedScene" uid="uid://ddft46yphsbs1" path="res://scenes/enemies/enemy_oe.tscn" id="4_fwvlu"]
 [ext_resource type="PackedScene" uid="uid://coit1yxsfwypx" path="res://scenes/enemies/enemy_mdw.tscn" id="5_163y0"]
 [ext_resource type="Texture2D" uid="uid://bulkt6tbj0wbw" path="res://assets/objects/long_table.png" id="5_qnouy"]
 [ext_resource type="Texture2D" uid="uid://bsaqlacof10b3" path="res://assets/objects/plant1.png" id="6_7gw5f"]
 [ext_resource type="Texture2D" uid="uid://bdc6piiv3x4n2" path="res://assets/objects/sofa.png" id="7_jfqce"]
-[ext_resource type="Texture2D" uid="uid://weh81gmkj1x1" path="res://assets/objects/window1.png" id="8_abive"]
-[ext_resource type="Texture2D" uid="uid://cbkfpai1bovf5" path="res://assets/objects/window2.png" id="9_yrt3y"]
 [ext_resource type="Texture2D" uid="uid://duykkoranauk3" path="res://assets/objects/plant2.png" id="10_o2lk1"]
 [ext_resource type="Texture2D" uid="uid://7bp23jvwlh8v" path="res://assets/objects/cup.png" id="11_m6omk"]
 [ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player/player.tscn" id="12_kvu8x"]
+[ext_resource type="Texture2D" uid="uid://5xup7yfffa1w" path="res://assets/objects/chair2.png" id="13_8jci7"]
 [ext_resource type="Texture2D" uid="uid://poobl0ngy4h0" path="res://assets/objects/wet_sign.png" id="13_ir0r4"]
-
-[sub_resource type="Gradient" id="Gradient_x4rax"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5s3fi"]
-gradient = SubResource("Gradient_x4rax")
-
-[sub_resource type="Gradient" id="Gradient_mxxc0"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ymah2"]
-gradient = SubResource("Gradient_mxxc0")
+[ext_resource type="Texture2D" uid="uid://dltes1s4feuhu" path="res://assets/objects/computer.png" id="14_lxqfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bia1j"]
 size = Vector2(1847, 577)
 
 [sub_resource type="Gradient" id="Gradient_6dhih"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ft4xy"]
 gradient = SubResource("Gradient_6dhih")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixc8l"]
-size = Vector2(2887, 180)
-
-[node name="world0" type="Node2D"]
+[node name="world3" type="Node2D"]
 script = ExtResource("1_qqntu")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_ficrh")]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(996.5, 485.25)
-scale = Vector2(8.10547, 971.5)
-texture = SubResource("GradientTexture1D_5s3fi")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(998, 988.125)
-scale = Vector2(8.14063, 533.75)
-texture = SubResource("GradientTexture1D_ymah2")
+[node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2(866, 900)
 
 [node name="LoadZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LoadZone"]
-position = Vector2(7389, -515)
+position = Vector2(9885, -587)
 shape = SubResource("RectangleShape2D_bia1j")
 
 [node name="CameraLimiter3" parent="." instance=ExtResource("2_c8xn8")]
@@ -87,20 +62,12 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(4810.5, 1082.25)
-scale = Vector2(37.7539, 185.5)
+position = Vector2(4810.5, 2158.25)
+scale = Vector2(37.7539, 2337.5)
 texture = SubResource("GradientTexture1D_ft4xy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1415.5, 1078)
-shape = SubResource("RectangleShape2D_ixc8l")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-14, 17, 2, 983, 1739, 985, 1740, 913, 2336, 912, 2336, 986, 3268.85, 986.659, 3271, 925, 3538, 922, 3533, 980, 7651, 991, 8973, -328, 9609, -328, 9609, 996, 9625, 1551, -722, 1516)
-
-[node name="Shitstairs2" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(8342, 345)
-texture = ExtResource("3_mwmqo")
 
 [node name="EnemyOE" parent="." instance=ExtResource("4_fwvlu")]
 position = Vector2(1401, 910)
@@ -145,40 +112,49 @@ position = Vector2(3401, 880)
 scale = Vector2(0.710938, 0.710938)
 texture = ExtResource("7_jfqce")
 
-[node name="Window1" type="Sprite2D" parent="assetsBG"]
-position = Vector2(2037, 659)
-texture = ExtResource("8_abive")
-
-[node name="Window2" type="Sprite2D" parent="assetsBG"]
-position = Vector2(3801, 612)
-texture = ExtResource("9_yrt3y")
-
-[node name="Plant2" type="Sprite2D" parent="assetsBG"]
-position = Vector2(1702, 891)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_o2lk1")
-
-[node name="Plant3" type="Sprite2D" parent="assetsBG"]
-position = Vector2(2368, 893)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_o2lk1")
-
 [node name="Cup" type="Sprite2D" parent="assetsBG"]
 position = Vector2(3274, 878)
 scale = Vector2(0.250002, 0.285717)
 texture = ExtResource("11_m6omk")
 
+[node name="Chair2" type="Sprite2D" parent="assetsBG"]
+position = Vector2(4997.47, 937)
+scale = Vector2(0.466667, 0.466667)
+texture = ExtResource("13_8jci7")
+
+[node name="Computer" type="Sprite2D" parent="assetsBG"]
+position = Vector2(4997.47, 908)
+scale = Vector2(0.382813, 0.382813)
+texture = ExtResource("14_lxqfp")
+
+[node name="Shitstairs3" type="Sprite2D" parent="assetsBG"]
+position = Vector2(8342, 345)
+texture = ExtResource("3_mwmqo")
+
 [node name="Player" parent="." instance=ExtResource("12_kvu8x")]
+z_index = 1
 position = Vector2(99, 876)
 
 [node name="assetsFG" type="Node" parent="."]
 
 [node name="WetSign" type="Sprite2D" parent="assetsFG"]
+z_index = 2
 position = Vector2(2120, 989)
 scale = Vector2(0.636719, 0.636719)
 texture = ExtResource("13_ir0r4")
 
+[node name="Plant2" type="Sprite2D" parent="assetsFG"]
+position = Vector2(1702, 891)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_o2lk1")
+
+[node name="Plant3" type="Sprite2D" parent="assetsFG"]
+position = Vector2(2368, 893)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_o2lk1")
+
 [connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
 
+[editable path="ParallaxBackground"]
 [editable path="CameraLimiter3"]
 [editable path="CameraLimiter2"]

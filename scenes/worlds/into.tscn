@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b21heifrksrhl"]
+
+[ext_resource type="Script" path="res://scenes/worlds/intro.gd" id="1_h3n4t"]
+[ext_resource type="Texture2D" uid="uid://qw1f4wkdusuy" path="res://assets/images/scene1.png" id="2_ytnio"]
+[ext_resource type="Texture2D" uid="uid://ntf27qgmwb7n" path="res://assets/images/scene2.png" id="3_pn38a"]
+[ext_resource type="Texture2D" uid="uid://bkj23ao3tbpoh" path="res://assets/images/scene3.png" id="4_6jgas"]
+[ext_resource type="Texture2D" uid="uid://cw5niig4lr5xs" path="res://assets/images/scene4.png" id="5_8gvvs"]
+[ext_resource type="Texture2D" uid="uid://cuoiwlxjceabe" path="res://assets/images/scene5.png" id="6_gb0bj"]
+
+[node name="Intro" type="CanvasLayer"]
+script = ExtResource("1_h3n4t")
+
+[node name="Scene1" type="Sprite2D" parent="."]
+position = Vector2(962, 534)
+texture = ExtResource("2_ytnio")
+
+[node name="Scene2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 534)
+texture = ExtResource("3_pn38a")
+
+[node name="Scene3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(962, 534)
+texture = ExtResource("4_6jgas")
+
+[node name="Scene4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(962, 536)
+texture = ExtResource("5_8gvvs")
+
+[node name="Scene5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(962, 541)
+texture = ExtResource("6_gb0bj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

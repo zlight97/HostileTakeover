@@ -22,6 +22,7 @@ var run_mult = 2.0
 var alive = true
 var can_pause = true
 var blocking = false
+var stop_movement = false
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var animation: AnimationPlayer = $Animation
@@ -104,3 +105,7 @@ func disable_hurtbox():
 
 func _on_unpause_timeout() -> void:
 	can_pause = true
+
+
+func _on_special_door_stop_movement(movement) -> void:
+	stop_movement = movement

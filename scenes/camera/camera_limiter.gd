@@ -9,6 +9,7 @@ const MAX_LIMIT = 10000000
 @export var one_way: bool = false
 @export var limit_x: LimitX = LimitX.NONE
 @export var limit_y: LimitY = LimitY.NONE
+@export var map: Node2D
 
 @onready var LimitPos = $CamPosition
 
@@ -42,3 +43,5 @@ func get_limit_right():
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		body.set_camera_limits(self)
+		if map:
+			map.entered(LimitPos.global_position.x, LimitPos.global_position.y)
