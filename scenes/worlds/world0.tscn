@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cowya1wptamrw"]
+[gd_scene load_steps=21 format=3 uid="uid://cowya1wptamrw"]
 
 [ext_resource type="Script" path="res://scenes/worlds/world.gd" id="1_ychno"]
 [ext_resource type="PackedScene" uid="uid://m0o7ioos2nyk" path="res://scenes/parallax_background.tscn" id="2_otkc3"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bj4vy3tghko1t" path="res://assets/objects/door1.png" id="14_j3w01"]
 [ext_resource type="AudioStream" uid="uid://6tikg81naxbf" path="res://assets/sounds/combat/punch-5-166698.mp3" id="15_i1hlu"]
 [ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="16_oqr0j"]
+[ext_resource type="AudioStream" uid="uid://critpl668nvl3" path="res://assets/Music/Electronic Vol5 Quanta Main.wav" id="17_em4si"]
 [ext_resource type="AudioStream" uid="uid://dx6kb1te53a1n" path="res://assets/sounds/combat/Impailed.wav" id="17_xxqlr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bia1j"]
@@ -192,6 +193,11 @@ wait_time = 0.7
 stream = ExtResource("17_xxqlr")
 script = ExtResource("16_oqr0j")
 audio_type = 1
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_em4si")
+script = ExtResource("16_oqr0j")
+audio_type = 2
 
 [connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
 [connection signal="stop_movement" from="SpecialDoor" to="Player" method="_on_special_door_stop_movement"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjko6uh35jsqf"
+path="res://.godot/imported/Electronic Vol5 Quanta Intensity 1.wav-e09bb753537af553b7e33e6f46e7505a.sample"
+
+[deps]
+
+source_file="res://assets/Music/Electronic Vol5 Quanta Intensity 1.wav"
+dest_files=["res://.godot/imported/Electronic Vol5 Quanta Intensity 1.wav-e09bb753537af553b7e33e6f46e7505a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dujht4necwklv"]
+[gd_scene load_steps=19 format=3 uid="uid://dujht4necwklv"]
 
 [ext_resource type="Script" path="res://scenes/worlds/world.gd" id="1_seye1"]
 [ext_resource type="PackedScene" uid="uid://m0o7ioos2nyk" path="res://scenes/parallax_background.tscn" id="2_a1inf"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://duykkoranauk3" path="res://assets/objects/plant2.png" id="11_ber4e"]
 [ext_resource type="Texture2D" uid="uid://7bp23jvwlh8v" path="res://assets/objects/cup.png" id="11_s4nx5"]
 [ext_resource type="Texture2D" uid="uid://dvm36d0du2kmj" path="res://assets/objects/mop.png" id="14_0xpaf"]
+[ext_resource type="AudioStream" uid="uid://critpl668nvl3" path="res://assets/Music/Electronic Vol5 Quanta Main.wav" id="14_hks7i"]
+[ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="15_ogxcf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bia1j"]
 size = Vector2(1847, 577)
@@ -155,6 +157,11 @@ texture = ExtResource("9_1rwwg")
 position = Vector2(2222, 1004)
 scale = Vector2(0.582031, 0.582031)
 texture = ExtResource("14_0xpaf")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_hks7i")
+script = ExtResource("15_ogxcf")
+audio_type = 2
 
 [connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
 

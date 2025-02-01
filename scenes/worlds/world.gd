@@ -4,6 +4,7 @@ extends Node2D
 
 func _ready():
 	get_tree().paused = false
+	$music.play_pitched()
 
 
 func _on_load_zone_body_entered(body: Node2D) -> void:

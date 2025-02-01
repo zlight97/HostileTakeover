@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7kt0ovrb2w03"]
+[gd_scene load_steps=18 format=3 uid="uid://b7kt0ovrb2w03"]
 
 [ext_resource type="Script" path="res://scenes/worlds/world.gd" id="1_2jvb1"]
 [ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_03yfv"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bsaqlacof10b3" path="res://assets/objects/plant1.png" id="10_gcjvq"]
 [ext_resource type="Texture2D" uid="uid://duykkoranauk3" path="res://assets/objects/plant2.png" id="11_2tgop"]
 [ext_resource type="Texture2D" uid="uid://bdc6piiv3x4n2" path="res://assets/objects/sofa.png" id="12_mymdy"]
+[ext_resource type="AudioStream" uid="uid://b10x7eadl03nn" path="res://assets/Music/Electronic Vol5 Quanta Cut 30.wav" id="13_6chj8"]
+[ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="14_m74qg"]
 
 [sub_resource type="Gradient" id="Gradient_6dhih"]
 
@@ -102,6 +104,10 @@ texture = ExtResource("11_2tgop")
 z_index = 2
 position = Vector2(2054, 867)
 texture = ExtResource("12_mymdy")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_6chj8")
+script = ExtResource("14_m74qg")
 
 [editable path="ParallaxBackground"]
 [editable path="CameraLimiter3"]

@@ -5,4 +5,4 @@ func enter():
 	enemy.current_health = 1
 
 func exit():
-	enemy.player.win()
+	get_node("/root/SceneManager").load_next_zone()

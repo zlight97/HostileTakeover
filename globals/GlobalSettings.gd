@@ -1,4 +1,4 @@
 extends Node
 
-var music_volume = 80
+var music_volume = 60
 var sfx_volume = 80

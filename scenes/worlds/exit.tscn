@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh8p53ag2hus8"]
+
+[ext_resource type="Script" path="res://scenes/worlds/exit.gd" id="1_tpbp1"]
+[ext_resource type="Texture2D" uid="uid://ovhl8y1qr5wk" path="res://assets/images/ending_contract.png" id="2_ct8x7"]
+[ext_resource type="Texture2D" uid="uid://clbc0ofbg7rp4" path="res://assets/images/ending_contract_signed.png" id="3_ooqug"]
+[ext_resource type="Texture2D" uid="uid://bbqc12ili85u8" path="res://assets/icons/Hostile Takeover logo.png" id="4_31bn8"]
+
+[node name="exit" type="CanvasLayer"]
+script = ExtResource("1_tpbp1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="S1" type="Sprite2D" parent="."]
+position = Vector2(906, 551)
+texture = ExtResource("2_ct8x7")
+
+[node name="S2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(907, 546)
+texture = ExtResource("3_ooqug")
+
+[node name="End" type="ColorRect" parent="."]
+visible = false
+offset_left = 1406.0
+offset_top = 256.0
+offset_right = 1784.0
+offset_bottom = 824.0
+color = Color(1, 1, 1, 0.227451)
+
+[node name="MainMenu" type="Button" parent="End"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 353.297
+offset_right = 293.0
+offset_bottom = 481.297
+text = "Main Menu"
+
+[node name="HostileTakeoverLogo" type="Sprite2D" parent="End"]
+position = Vector2(205, 169.297)
+scale = Vector2(0.0948037, 0.0948037)
+texture = ExtResource("4_31bn8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="End"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 297.297
+offset_right = 341.0
+offset_bottom = 345.297
+bbcode_enabled = true
+text = "[center]You completed the merger!"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_up" from="End/MainMenu" to="." method="_on_main_menu_button_up"]
