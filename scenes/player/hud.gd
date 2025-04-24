@@ -21,6 +21,7 @@ func toggle_pause():
 	$Pause.visible = !$Pause.visible
 	if !$Pause.visible:
 		get_tree().paused = false
+		get_tree().call_group("Audio", "update_sound")
 
 func _input(event: InputEvent) -> void:
 	if $Pause.visible:

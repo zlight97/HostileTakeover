@@ -29,7 +29,7 @@ var stop_movement = false
 
 func apply_damage(damage):
 	if blocking:
-		damage = damage/4
+		damage = 1 if damage > 0 else damage
 		$Block.play_pitched()
 	else:
 		$Hit.play_pitched()
@@ -48,7 +48,7 @@ func set_camera_limits(limiter: CameraLimiter):
 func jump(time):
 	velocity.y = jump_velocity * time * jump_mult
 	var direction := Input.get_axis("left", "right")
-	velocity.x = velocity.x + (direction * MAX_SPEED/2) if abs(velocity.x) < MAX_SPEED/2 else direction * MAX_SPEED/2
+	velocity.x = velocity.x + (direction * MAX_SPEED/2) if abs(velocity.x) < MAX_SPEED else direction * MAX_SPEED/2
 
 func move(direction, delta):
 	if is_on_floor(): # cannot change movement while airborne

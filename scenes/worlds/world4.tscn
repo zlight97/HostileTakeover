@@ -1,17 +1,17 @@
 [gd_scene load_steps=18 format=3 uid="uid://dmesi0o6p5w0"]
 
-[ext_resource type="Script" path="res://scenes/worlds/world.gd" id="1_1l2ny"]
+[ext_resource type="Script" uid="uid://cd0agaydfq7so" path="res://scenes/worlds/world.gd" id="1_1l2ny"]
 [ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_0rt3y"]
 [ext_resource type="PackedScene" uid="uid://m0o7ioos2nyk" path="res://scenes/parallax_background.tscn" id="2_i2eol"]
 [ext_resource type="PackedScene" uid="uid://ddft46yphsbs1" path="res://scenes/enemies/enemy_oe.tscn" id="3_udji1"]
-[ext_resource type="Script" path="res://scenes/spawner.gd" id="3_vq6lv"]
+[ext_resource type="Script" uid="uid://dr8i6r2e6n3co" path="res://scenes/spawner.gd" id="3_vq6lv"]
 [ext_resource type="Texture2D" uid="uid://c4uw081572tvy" path="res://assets/objects/shitstairs.png" id="5_ixap8"]
 [ext_resource type="Texture2D" uid="uid://bulkt6tbj0wbw" path="res://assets/objects/long_table.png" id="6_cx4qp"]
 [ext_resource type="Texture2D" uid="uid://bsaqlacof10b3" path="res://assets/objects/plant1.png" id="7_1x82l"]
 [ext_resource type="Texture2D" uid="uid://7bp23jvwlh8v" path="res://assets/objects/cup.png" id="11_d48ck"]
 [ext_resource type="AudioStream" uid="uid://c81pn0el21dr8" path="res://assets/Music/Electronic Vol5 Quanta Intensity 2.wav" id="13_ewl21"]
 [ext_resource type="PackedScene" uid="uid://b6ucji7xykjcq" path="res://scenes/player/player.tscn" id="14_6l2fw"]
-[ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="14_r33ei"]
+[ext_resource type="Script" uid="uid://ck8gkqeehiawc" path="res://scenes/templates/pitch_audio_stream_player.gd" id="14_r33ei"]
 [ext_resource type="Texture2D" uid="uid://poobl0ngy4h0" path="res://assets/objects/wet_sign.png" id="15_0otou"]
 [ext_resource type="Texture2D" uid="uid://duykkoranauk3" path="res://assets/objects/plant2.png" id="16_cd5vb"]
 
@@ -145,9 +145,10 @@ position = Vector2(2368, 893)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_cd5vb")
 
-[node name="music" type="AudioStreamPlayer" parent="."]
+[node name="music" type="AudioStreamPlayer" parent="." groups=["Audio"]]
 stream = ExtResource("13_ewl21")
 script = ExtResource("14_r33ei")
+audio_type = 2
 
 [connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

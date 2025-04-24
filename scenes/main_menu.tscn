@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bgktfqj60tbbh"]
 
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_vwd5p"]
+[ext_resource type="Script" uid="uid://bmn2n4w0x6mct" path="res://scenes/main_menu.gd" id="1_vwd5p"]
 [ext_resource type="Texture2D" uid="uid://bbqc12ili85u8" path="res://assets/icons/Hostile Takeover logo.png" id="2_j4lp7"]
-[ext_resource type="Script" path="res://scenes/music_volume_slider.gd" id="3_c18ms"]
+[ext_resource type="Script" uid="uid://b4d3law5sm1sr" path="res://scenes/music_volume_slider.gd" id="3_c18ms"]
 
 [sub_resource type="Gradient" id="Gradient_lwdf8"]
 offsets = PackedFloat32Array(1)

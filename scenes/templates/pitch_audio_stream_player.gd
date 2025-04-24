@@ -29,9 +29,12 @@ func play_pitched(from_position=0.0):
 		pass
 	elif audio_type == volume_type.SFX:
 		volume_db = (40*float(settings.sfx_volume) / 100.)-40
+		if settings.sfx_volume == 0:
+			return
 	elif audio_type == volume_type.MUSIC:
 		volume_db = (40*float(settings.music_volume) / 100.)-40
-		play(from_position)
+		if settings.music_volume > 0:
+			play(from_position)
 		return
 		
 	while abs(lastPitch - pitch_scale) < pitch_min_diff:
@@ -48,6 +51,10 @@ func set_pitches(low=.8,high=1.2,diff=.1):
 	pitch_hi = high
 	pitch_min_diff = diff
 
+func update_sound():
+	stop()
+	play_pitched(get_playback_position())
+	
 
 func _on_timer_timeout() -> void:
 	can_play = true

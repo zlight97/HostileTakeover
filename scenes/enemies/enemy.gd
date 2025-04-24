@@ -83,7 +83,7 @@ func die():
 func _process(delta: float) -> void:
 	if current_health <= 0 and alive:
 		die()
-	elif not alive and $Animation.current_animation == "dead":
+	elif not alive and $Animation.current_animation != "dead" and $Animation.current_animation:
 		$StateMachine.on_state_change($StateMachine.current_state, "dead")
 
 func _physics_process(delta: float) -> void:

@@ -3,7 +3,7 @@ extends PlayerState
 var mult: float = 0.
 
 func enter():
-	mult = 0
+	mult = 1
 	player.sprite_change("jump")
 
 func physics_update(delta):

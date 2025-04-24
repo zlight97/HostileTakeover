@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh8p53ag2hus8"]
 
-[ext_resource type="Script" path="res://scenes/worlds/exit.gd" id="1_tpbp1"]
+[ext_resource type="Script" uid="uid://b8ef8asbtho0b" path="res://scenes/worlds/exit.gd" id="1_tpbp1"]
 [ext_resource type="Texture2D" uid="uid://ovhl8y1qr5wk" path="res://assets/images/ending_contract.png" id="2_ct8x7"]
 [ext_resource type="Texture2D" uid="uid://clbc0ofbg7rp4" path="res://assets/images/ending_contract_signed.png" id="3_ooqug"]
 [ext_resource type="Texture2D" uid="uid://bbqc12ili85u8" path="res://assets/icons/Hostile Takeover logo.png" id="4_31bn8"]

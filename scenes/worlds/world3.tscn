@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://cc6ha8hk347m4"]
 
-[ext_resource type="Script" path="res://scenes/worlds/world.gd" id="1_qqntu"]
+[ext_resource type="Script" uid="uid://cd0agaydfq7so" path="res://scenes/worlds/world.gd" id="1_qqntu"]
 [ext_resource type="PackedScene" uid="uid://dcg0nacjk40mw" path="res://scenes/camera/camera_limiter.tscn" id="2_c8xn8"]
 [ext_resource type="PackedScene" uid="uid://m0o7ioos2nyk" path="res://scenes/parallax_background.tscn" id="2_ficrh"]
 [ext_resource type="Texture2D" uid="uid://c4uw081572tvy" path="res://assets/objects/shitstairs.png" id="3_mwmqo"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://poobl0ngy4h0" path="res://assets/objects/wet_sign.png" id="13_ir0r4"]
 [ext_resource type="Texture2D" uid="uid://dltes1s4feuhu" path="res://assets/objects/computer.png" id="14_lxqfp"]
 [ext_resource type="AudioStream" uid="uid://bjko6uh35jsqf" path="res://assets/Music/Electronic Vol5 Quanta Intensity 1.wav" id="16_e02ga"]
-[ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="17_ebsi8"]
+[ext_resource type="Script" uid="uid://ck8gkqeehiawc" path="res://scenes/templates/pitch_audio_stream_player.gd" id="17_ebsi8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bia1j"]
 size = Vector2(1847, 577)
@@ -155,9 +155,10 @@ position = Vector2(2368, 893)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_o2lk1")
 
-[node name="music" type="AudioStreamPlayer" parent="."]
+[node name="music" type="AudioStreamPlayer" parent="." groups=["Audio"]]
 stream = ExtResource("16_e02ga")
 script = ExtResource("17_ebsi8")
+audio_type = 2
 
 [connection signal="body_entered" from="LoadZone" to="." method="_on_load_zone_body_entered"]
 

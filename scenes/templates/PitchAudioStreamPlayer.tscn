@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://eym1rxfglttb"]
 
-[ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="2_5qtob"]
+[ext_resource type="Script" uid="uid://ck8gkqeehiawc" path="res://scenes/templates/pitch_audio_stream_player.gd" id="2_5qtob"]
 
-[node name="PitchAudioStreamPlayer" type="AudioStreamPlayer"]
+[node name="PitchAudioStreamPlayer" type="AudioStreamPlayer" groups=["Audio"]]
 script = ExtResource("2_5qtob")
 
 [node name="Timer" type="Timer" parent="."]

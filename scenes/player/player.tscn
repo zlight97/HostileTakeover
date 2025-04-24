@@ -1,8 +1,8 @@
 [gd_scene load_steps=94 format=3 uid="uid://b6ucji7xykjcq"]
 
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_an811"]
+[ext_resource type="Script" uid="uid://l0k2j5qcg4xj" path="res://scenes/player/player.gd" id="1_an811"]
 [ext_resource type="Texture2D" uid="uid://bj1yb2fcdr42t" path="res://assets/MDW/jump/jump0002.png" id="2_gwyt2"]
-[ext_resource type="Script" path="res://scenes/player/hurtbox.gd" id="2_l1q6x"]
+[ext_resource type="Script" uid="uid://kfkqpdcvun6j" path="res://scenes/player/hurtbox.gd" id="2_l1q6x"]
 [ext_resource type="Texture2D" uid="uid://bm3vmn42afb1v" path="res://assets/MDW/idle/idle0000.png" id="3_5me5y"]
 [ext_resource type="Texture2D" uid="uid://brd8fd7axf1b0" path="res://assets/MDW/jump/jump0003.png" id="3_vengi"]
 [ext_resource type="Texture2D" uid="uid://dgtnxpmyt3eiw" path="res://assets/MDW/idle/block0000.png" id="4_cchwv"]
@@ -39,18 +39,18 @@
 [ext_resource type="Texture2D" uid="uid://ciu75x0lpo3f1" path="res://assets/MDW/attack/attack0004.png" id="16_mniyt"]
 [ext_resource type="Texture2D" uid="uid://bxwhyarr3kxts" path="res://assets/MDW/walking/walk0006.png" id="17_6w2rv"]
 [ext_resource type="Texture2D" uid="uid://d2kvjjqjbbvfu" path="res://assets/MDW/attack/attack0005.png" id="17_50aea"]
-[ext_resource type="Script" path="res://scenes/state_machine.gd" id="17_ub7h3"]
+[ext_resource type="Script" uid="uid://dtvxf2lyogkre" path="res://scenes/state_machine.gd" id="17_ub7h3"]
 [ext_resource type="Texture2D" uid="uid://dx60x43r1ec1x" path="res://assets/MDW/attack/attack0006.png" id="18_8kcit"]
-[ext_resource type="Script" path="res://scenes/player/states/player_walk.gd" id="18_fpxwx"]
-[ext_resource type="Script" path="res://scenes/player/states/player_idle.gd" id="18_g0q2j"]
+[ext_resource type="Script" uid="uid://7kd6kg2a0ljg" path="res://scenes/player/states/player_walk.gd" id="18_fpxwx"]
+[ext_resource type="Script" uid="uid://bp0ryeyx3om53" path="res://scenes/player/states/player_idle.gd" id="18_g0q2j"]
 [ext_resource type="Texture2D" uid="uid://cof7e63ni7jyk" path="res://assets/MDW/walking/walk0007.png" id="18_s34fs"]
 [ext_resource type="Texture2D" uid="uid://cf2iv05sr37p8" path="res://assets/MDW/attack/attack0007.png" id="19_xnx6r"]
 [ext_resource type="Texture2D" uid="uid://cxtu6v8sobxnt" path="res://assets/MDW/attack/attack0008.png" id="20_jgrpn"]
-[ext_resource type="Script" path="res://scenes/player/states/airborne.gd" id="20_k58mf"]
+[ext_resource type="Script" uid="uid://hyxhp3jjt0dm" path="res://scenes/player/states/airborne.gd" id="20_k58mf"]
 [ext_resource type="Texture2D" uid="uid://c1lpueiib4xl7" path="res://assets/MDW/attack/attack0009.png" id="21_b4y18"]
-[ext_resource type="Script" path="res://scenes/player/states/jump.gd" id="21_w0k3u"]
-[ext_resource type="Script" path="res://scenes/player/states/jab.gd" id="22_dqw6e"]
-[ext_resource type="Script" path="res://scenes/player/states/air_attack.gd" id="23_3drrk"]
+[ext_resource type="Script" uid="uid://dnya4irq557rg" path="res://scenes/player/states/jump.gd" id="21_w0k3u"]
+[ext_resource type="Script" uid="uid://djb6qj3sdqwbo" path="res://scenes/player/states/jab.gd" id="22_dqw6e"]
+[ext_resource type="Script" uid="uid://d4dablvlyx0is" path="res://scenes/player/states/air_attack.gd" id="23_3drrk"]
 [ext_resource type="Texture2D" uid="uid://6tlq12jgij88" path="res://assets/MDW/run/run0000.png" id="36_ovp0u"]
 [ext_resource type="Texture2D" uid="uid://dwhj3hcu6tkao" path="res://assets/MDW/run/run0001.png" id="37_nhtfh"]
 [ext_resource type="Texture2D" uid="uid://bthqa4kgosq1g" path="res://assets/MDW/run/run0002.png" id="38_mx8lb"]
@@ -63,14 +63,14 @@
 [ext_resource type="Texture2D" uid="uid://doirbjrrguanj" path="res://assets/MDW/run/run0009.png" id="45_s6hyl"]
 [ext_resource type="Texture2D" uid="uid://c756vud5we0lq" path="res://assets/MDW/run/run0010.png" id="46_t7vk5"]
 [ext_resource type="Texture2D" uid="uid://b2c6wnexkmyok" path="res://assets/MDW/run/run0011.png" id="47_4ffbd"]
-[ext_resource type="Script" path="res://scenes/player/states/charge_attack.gd" id="51_adev2"]
-[ext_resource type="Script" path="res://scenes/player/states/charge_attack_1.gd" id="52_qc2aw"]
-[ext_resource type="Script" path="res://scenes/player/states/run.gd" id="58_ibi6d"]
+[ext_resource type="Script" uid="uid://cn33ectbf225v" path="res://scenes/player/states/charge_attack.gd" id="51_adev2"]
+[ext_resource type="Script" uid="uid://dv0b2bhb0hlyt" path="res://scenes/player/states/charge_attack_1.gd" id="52_qc2aw"]
+[ext_resource type="Script" uid="uid://47l1dhyjbnhk" path="res://scenes/player/states/run.gd" id="58_ibi6d"]
 [ext_resource type="PackedScene" uid="uid://dnj67jm44rwpt" path="res://scenes/player/hud.tscn" id="67_ug417"]
-[ext_resource type="Script" path="res://scenes/player/states/dead.gd" id="68_c7q1a"]
-[ext_resource type="Script" path="res://scenes/player/states/block.gd" id="69_bld8x"]
+[ext_resource type="Script" uid="uid://dtv0qknlnxfvc" path="res://scenes/player/states/dead.gd" id="68_c7q1a"]
+[ext_resource type="Script" uid="uid://cdtdspg3igscm" path="res://scenes/player/states/block.gd" id="69_bld8x"]
 [ext_resource type="AudioStream" uid="uid://dweklbxwck5h2" path="res://assets/sounds/combat/punch-1-166694.mp3" id="70_12s0b"]
-[ext_resource type="Script" path="res://scenes/templates/pitch_audio_stream_player.gd" id="71_khhih"]
+[ext_resource type="Script" uid="uid://ck8gkqeehiawc" path="res://scenes/templates/pitch_audio_stream_player.gd" id="71_khhih"]
 [ext_resource type="AudioStream" uid="uid://cavqic6682r2m" path="res://assets/sounds/combat/punch-2-123106.mp3" id="72_fn2bo"]
 [ext_resource type="AudioStream" uid="uid://cic2r0evcdtnk" path="res://assets/sounds/combat/punch-6-166699.mp3" id="72_ilr2a"]
 [ext_resource type="AudioStream" uid="uid://bgvvcxtwlk85a" path="res://assets/sounds/combat/punch-7-166700.mp3" id="73_f66ph"]
@@ -609,6 +609,18 @@ tracks/11/keys = {
 "args": [0.0],
 "method": &"play_pitched"
 }]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".:attack_damage")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [50.0]
 }
 
 [sub_resource type="Animation" id="Animation_kt3en"]
@@ -1654,20 +1666,20 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_diiyw"]
 _data = {
-"RESET": SubResource("Animation_7nfal"),
-"air_attack": SubResource("Animation_gol8j"),
-"airborne": SubResource("Animation_kt3en"),
-"block": SubResource("Animation_otm60"),
-"charge_attack_0": SubResource("Animation_x1y06"),
-"charge_attack_1": SubResource("Animation_hgb2e"),
-"dead": SubResource("Animation_di8nj"),
-"idle": SubResource("Animation_0q2bk"),
-"jab0": SubResource("Animation_t0een"),
-"jab1": SubResource("Animation_vhj0l"),
-"jab2": SubResource("Animation_7vfr0"),
-"jump": SubResource("Animation_4qj6v"),
-"run": SubResource("Animation_wl1dd"),
-"walk": SubResource("Animation_7jfus")
+&"RESET": SubResource("Animation_7nfal"),
+&"air_attack": SubResource("Animation_gol8j"),
+&"airborne": SubResource("Animation_kt3en"),
+&"block": SubResource("Animation_otm60"),
+&"charge_attack_0": SubResource("Animation_x1y06"),
+&"charge_attack_1": SubResource("Animation_hgb2e"),
+&"dead": SubResource("Animation_di8nj"),
+&"idle": SubResource("Animation_0q2bk"),
+&"jab0": SubResource("Animation_t0een"),
+&"jab1": SubResource("Animation_vhj0l"),
+&"jab2": SubResource("Animation_7vfr0"),
+&"jump": SubResource("Animation_4qj6v"),
+&"run": SubResource("Animation_wl1dd"),
+&"walk": SubResource("Animation_7jfus")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -1705,7 +1717,7 @@ disabled = true
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_diiyw")
+&"": SubResource("AnimationLibrary_diiyw")
 }
 
 [node name="Camera" parent="." instance=ExtResource("16_8y1rm")]
@@ -1767,22 +1779,22 @@ script = ExtResource("69_bld8x")
 wait_time = 0.5
 one_shot = true
 
-[node name="Jab" type="AudioStreamPlayer" parent="."]
+[node name="Jab" type="AudioStreamPlayer" parent="." groups=["Audio"]]
 stream = ExtResource("70_12s0b")
 script = ExtResource("71_khhih")
 audio_type = 1
 
-[node name="Charge" type="AudioStreamPlayer" parent="."]
+[node name="Charge" type="AudioStreamPlayer" parent="." groups=["Audio"]]
 stream = ExtResource("72_ilr2a")
 script = ExtResource("71_khhih")
 audio_type = 1
 
-[node name="Block" type="AudioStreamPlayer" parent="."]
+[node name="Block" type="AudioStreamPlayer" parent="." groups=["Audio"]]
 stream = ExtResource("73_f66ph")
 script = ExtResource("71_khhih")
 audio_type = 1
 
-[node name="Hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="." groups=["Audio"]]
 stream = ExtResource("72_fn2bo")
 script = ExtResource("71_khhih")
 audio_type = 1
